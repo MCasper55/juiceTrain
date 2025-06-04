@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsfi4jn8yohoy"]
+
+[ext_resource type="PackedScene" uid="uid://c3rdxwrvpg6u5" path="res://Player/player.tscn" id="1_372la"]
+[ext_resource type="Texture2D" uid="uid://bp5err5anjwwl" path="res://Textures/comfystarsunsettling.png" id="2_kuy75"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_372la"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_kuy75"]
+sky_material = SubResource("ProceduralSkyMaterial_372la")
+
+[sub_resource type="Environment" id="Environment_7vg43"]
+background_mode = 2
+sky = SubResource("Sky_kuy75")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vg43"]
+albedo_texture = ExtResource("2_kuy75")
+uv1_scale = Vector3(5, 5, 5)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7vg43")
+
+[node name="Player" parent="." instance=ExtResource("1_372la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154573, 1.11334, 0.0713899)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.608236, -0.369371, 0.1146)
+use_collision = true
+size = Vector3(11.912, 0.257813, 13.6864)
+material = SubResource("StandardMaterial3D_7vg43")

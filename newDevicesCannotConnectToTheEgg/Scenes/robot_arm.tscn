@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=3 uid="uid://dswn7hu8wjf0c"]
+
+[ext_resource type="Script" uid="uid://c77ro7w24e56v" path="res://Scripts/arm.gd" id="1_sqksa"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hconu"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_sqksa"]
+sky_material = SubResource("ProceduralSkyMaterial_hconu")
+
+[sub_resource type="Environment" id="Environment_j3vkm"]
+background_mode = 2
+sky = SubResource("Sky_sqksa")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hconu"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sqksa"]
+points = PackedVector3Array(-5, -0.5, -5, -5, 0.5, -5, 5, -0.5, -5, -5, -0.5, 5, -5, 0.5, 5, 5, 0.5, -5, 5, -0.5, 5, 5, 0.5, 5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qgsw1"]
+rough = true
+bounce = 1.0
+absorbent = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_atw18"]
+height = 2.35
+radial_segments = 8
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0bpxw"]
+points = PackedVector3Array(0.471397, 1.16967, 0.0690861, -0.468782, -1.14371, -0.075401, -0.471871, -1.15131, 0.0679393, 0.471397, -1.16967, 0.0690861, 0.0679393, 1.15131, -0.471871, -0.333257, 1.17078, 0.362022, 0.0690861, -1.16967, 0.471397, 0.322272, -1.15994, -0.366571, -0.364176, 1.15228, -0.328055, -0.075401, -1.14371, -0.468782, 0.3536, 1.14384, 0.3536, 0.362022, 1.17078, -0.333257, -0.333257, -1.17078, 0.362022, -0.471871, 1.15131, 0.0679393, -0.0765478, 1.16207, 0.468307, 0.3536, -1.14384, 0.3536, -0.328055, -1.15228, -0.364176, 0.468307, -1.16207, -0.0765478, -0.075401, 1.14371, -0.468782, 0.0690861, 1.16967, 0.471397, 0.0679393, -1.15131, -0.471871, -0.0765478, -1.16207, 0.468307, 0.468307, 1.16207, -0.0765478, -0.468782, 1.14371, -0.075401, 0.362022, -1.17078, -0.333257, -0.366571, 1.15994, 0.322272, -0.328055, 1.15228, -0.364176, -0.364176, -1.15228, -0.328055, 0.322272, 1.15994, -0.366571, -0.366571, -1.15994, 0.322272)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sqksa"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j3vkm"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="RobotArm(Joint)" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_j3vkm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Environment"]
+transform = Transform3D(-0.0105484, 0.155638, -0.987758, -0.999944, -0.00164186, 0.0104198, -4.3709e-08, 0.987813, 0.155647, -11.7312, 3.66811, 2.69498)
+fov = 69.9502
+
+[node name="Joint" type="Generic6DOFJoint3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.15982, 3.28136)
+node_a = NodePath("../Floor")
+node_b = NodePath("../../Arm/Segment1")
+
+[node name="Floor" type="StaticBody3D" parent="Environment"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60918, 0)
+mesh = SubResource("BoxMesh_hconu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60918, 0)
+shape = SubResource("ConvexPolygonShape3D_sqksa")
+
+[node name="Arm" type="Node3D" parent="."]
+transform = Transform3D(-1, -3.55271e-15, 2.98023e-08, -2.98023e-08, 4.37114e-08, -1, 0, -1, -4.37114e-08, 0, 3.35555, 0)
+script = ExtResource("1_sqksa")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Arm"]
+transform = Transform3D(1, 6.85095e-09, -7.98134e-10, -6.85095e-09, 0.973219, -0.22988, -7.98135e-10, 0.22988, 0.973219, -1.08227e-08, 1.38331, -0.363152)
+node_a = NodePath("../Segment1")
+node_b = NodePath("../Segment2")
+linear_motor_x/target_velocity = 2.085
+linear_spring_x/stiffness = 0.0
+linear_spring_x/damping = 0.0
+linear_spring_y/stiffness = 0.0
+linear_spring_y/damping = 0.0
+linear_spring_z/stiffness = 0.0
+linear_spring_z/damping = 0.0
+angular_spring_x/enabled = true
+angular_spring_y/enabled = true
+angular_spring_z/enabled = true
+
+[node name="Generic6DOFJoint3D2" type="Generic6DOFJoint3D" parent="Arm"]
+transform = Transform3D(1, -1.78444e-08, -5.93275e-09, 1.78444e-08, 0.80093, 0.598758, -5.93274e-09, -0.598758, 0.80093, -7.10543e-15, 3.47727, 1.5864)
+node_a = NodePath("../Segment2")
+node_b = NodePath("../Segment3")
+linear_motor_x/target_velocity = 2.085
+linear_spring_x/stiffness = 0.0
+linear_spring_x/damping = 0.0
+linear_spring_y/stiffness = 0.0
+linear_spring_y/damping = 0.0
+linear_spring_z/stiffness = 0.0
+linear_spring_z/damping = 0.0
+angular_spring_x/enabled = true
+angular_spring_y/enabled = true
+angular_spring_z/enabled = true
+
+[node name="Segment1" type="RigidBody3D" parent="Arm"]
+physics_material_override = SubResource("PhysicsMaterial_qgsw1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arm/Segment1"]
+mesh = SubResource("CylinderMesh_atw18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm/Segment1"]
+shape = SubResource("ConvexPolygonShape3D_0bpxw")
+
+[node name="Segment2" type="RigidBody3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, 0.825291, -0.564708, 0, 0.564708, 0.825291, 0, 2.36591, 0.75133)
+mass = 9.942
+physics_material_override = SubResource("PhysicsMaterial_qgsw1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arm/Segment2"]
+mesh = SubResource("CylinderMesh_atw18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm/Segment2"]
+shape = SubResource("ConvexPolygonShape3D_0bpxw")
+
+[node name="Segment3" type="RigidBody3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, 0.180571, -0.983562, 0, 0.983562, 0.180571, 0, 3.76933, 2.93464)
+mass = 15.0
+physics_material_override = SubResource("PhysicsMaterial_qgsw1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arm/Segment3"]
+mesh = SubResource("CylinderMesh_atw18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arm/Segment3"]
+shape = SubResource("ConvexPolygonShape3D_0bpxw")
+
+[node name="Egg" type="Node3D" parent="."]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Egg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.926222)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Egg/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.63953)
+mesh = SubResource("CapsuleMesh_sqksa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Egg/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.63953)
+shape = SubResource("ConvexPolygonShape3D_j3vkm")
