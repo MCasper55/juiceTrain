@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjqocm1e2a7rm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w3ai0"]
+friction = 0.2
+rough = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_w3ai0"]
+height = 1.4
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w3ai0"]
+points = PackedVector3Array(0.487191, 0.147911, 0.0216526, -0.486206, -0.148109, -0.0416191, -0.486139, -0.148088, 0.0429086, -0.0848068, 0.683522, -0.0633589, 0.0428142, -0.148091, -0.486149, 0.0844011, -0.440608, 0.378224, -0.0623169, 0.314658, 0.441113, 0.106929, -0.659449, -0.126899, -0.0834979, 0.44167, -0.37784, 0.37582, 0.14576, -0.312005, -0.377707, 0.441404, 0.0846472, -0.31361, -0.356055, 0.293869, 0.271787, 0.354564, 0.334253, 0.419804, -0.335288, 0.126333, -0.311355, -0.395065, -0.26968, 0.253988, 0.59105, -0.0837359, -0.353892, 0.229292, -0.312105, 0.374947, -0.33267, -0.22811, -0.231776, -0.612851, 0.0639753, -0.292123, 0.104568, 0.39796, 0.292983, -0.104283, 0.397372, -0.0627201, 0.612318, 0.232774, -0.0627718, -0.126694, 0.486641, 0.191011, -0.634854, 0.0852273, 0.0426168, -0.484424, -0.357349, 0.16777, 0.355294, -0.39643, -0.18852, -0.0420102, -0.461694, -0.37574, 0.397189, -0.166526, 0.252464, 0.566589, 0.147371, -0.0840635, -0.635125, 0.191093, -0.126173, -0.634013, -0.168335, -0.460913, 0.125792, 0.168389)
+
+[node name="Egg" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_w3ai0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_w3ai0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_w3ai0")

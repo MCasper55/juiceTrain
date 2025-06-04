@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="newDevicesCANNOTConnectToTheEgg"
-run/main_scene="uid://dswn7hu8wjf0c"
+run/main_scene="uid://bicurmws3yvrj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [input]
