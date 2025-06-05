@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bicurmws3yvrj"]
+[gd_scene load_steps=8 format=3 uid="uid://bicurmws3yvrj"]
 
 [ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Scenes/egg.tscn" id="1_0ovjy"]
 [ext_resource type="PackedScene" uid="uid://2xlhv5m41m67" path="res://Scenes/robot_arm_anim.tscn" id="2_fesqg"]
@@ -20,6 +20,12 @@ tonemap_mode = 1
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0165
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesqg"]
+grow_amount = -16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4afia"]
+grow_amount = 1.368
 
 [node name="EggRoom" type="Node3D"]
 
@@ -55,19 +61,19 @@ fov = 56.2056
 transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, 0, 0)
 use_collision = true
 size = Vector3(15, 9, 15)
+material = SubResource("StandardMaterial3D_fesqg")
 
 [node name="Room hole" type="CSGBox3D" parent="Room/RoomCsg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 operation = 2
 size = Vector3(13.5, 7.5, 15)
 
-[node name="Egg" parent="Room" instance=ExtResource("1_0ovjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38638, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Room"]
+[node name="CSGBox3D" type="CSGSphere3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.39039, 0)
 use_collision = true
-size = Vector3(2, 2, 2)
+radius = 1.1
+radial_segments = 4
+material = SubResource("StandardMaterial3D_4afia")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="Room/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07236, 0)
@@ -77,10 +83,15 @@ sides = 16
 ring_sides = 8
 smooth_faces = false
 
-[node name="Devices" type="Node3D" parent="."]
+[node name="Devices" type="Node3D" parent="." groups=["CanBreakEgg"]]
 
 [node name="RobotArmAnim" parent="Devices" instance=ExtResource("2_fesqg")]
 transform = Transform3D(-0.258819, 1.93185, 0, -0.965926, -0.517638, 0, 0, 0, 1, -5.40395, 0.166141, 0)
 
 [node name="RobotArmAnim2" parent="Devices" instance=ExtResource("2_fesqg")]
-transform = Transform3D(-0.312218, 1.6693, 0.453735, -0.94267, -0.662888, -0.0389627, 0.117867, -0.879775, 0.890284, -4.64555, 1.25006, 2.25971)
+transform = Transform3D(-0.249326, 1.66739, 0.492736, -0.959844, -0.560607, -0.0114206, 0.128594, -0.951594, 0.870104, -4.36522, -0.371743, 2.70257)
+
+[node name="Egg" type="Node3D" parent="."]
+
+[node name="Egg" parent="Egg" instance=ExtResource("1_0ovjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.33451, 0)

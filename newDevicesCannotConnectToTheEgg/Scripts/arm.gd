@@ -20,7 +20,7 @@ func _process(delta):
 	if forceStrength >= -2000:
 		forceStrength *= 1.005
 	
-	if seg3mesh.scale.y < 2:
+	if seg3mesh.scale.y < 3:
 		seg3mesh.scale.y *= 1.0006
 		seg3col .scale.y *= 1.0006
 	
