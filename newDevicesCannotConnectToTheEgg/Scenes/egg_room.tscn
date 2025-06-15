@@ -55,18 +55,19 @@ spot_attenuation = -0.74
 spot_angle = 81.61
 
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -18)
-fov = 56.2056
+transform = Transform3D(-0.907057, 0.129382, -0.400634, 0, 0.951608, 0.307316, 0.421008, 0.278753, -0.863162, -2.58328, 1.30765, -5.08798)
+fov = 65.8
 
 [node name="FloorBreak" type="Area3D" parent="World" groups=["CanBreakEgg"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.85401, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorBreak"]
 shape = SubResource("BoxShape3D_fesqg")
+debug_color = Color(0.903173, 0.000148628, 0.753945, 0.42)
 
 [node name="Room" type="Node3D" parent="."]
 
-[node name="RoomCsg" type="CSGBox3D" parent="Room"]
+[node name="RoomCsg" type="CSGBox3D" parent="Room" groups=["CanBreakEgg"]]
 transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, 0, 0)
 use_collision = true
 size = Vector3(15, 9, 15)
@@ -98,9 +99,56 @@ smooth_faces = false
 transform = Transform3D(-0.258819, 1.93185, 0, -0.965926, -0.517638, 0, 0, 0, 1, -5.40395, 0.166141, 0)
 
 [node name="RobotArmAnim2" parent="Devices" instance=ExtResource("2_fesqg")]
-transform = Transform3D(-0.249326, 1.66739, 0.492736, -0.959844, -0.560607, -0.0114206, 0.128594, -0.951594, 0.870104, -4.36522, -0.371743, 2.70257)
+transform = Transform3D(-0.24386, 1.62709, 0.527895, -0.959844, -0.560607, -0.0114206, 0.138679, -1.01896, 0.849233, -4.36522, -0.371743, 2.70257)
+
+[node name="RobotArmAnim4" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.0361934, 1.21285, 0.794316, -0.969753, -0.341358, 0.174492, 0.241389, -1.55321, 0.581906, -3.37216, -1.04534, 4.43727)
+
+[node name="RobotArmAnim3" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(-0.0970557, 0.587207, 0.950988, -0.959844, -0.560607, -0.0114206, 0.263211, -1.82782, 0.309019, -1.54016, -0.371743, 5.209)
+
+[node name="RobotArmAnim5" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.0724511, -0.540782, 0.960021, -0.965926, -0.517638, 0, 0.248472, -1.85462, -0.27993, 1.79893, 0.166141, 5.3152)
+
+[node name="RobotArmAnim17" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.0321563, -0.240017, 0.992252, -0.883505, -0.935178, -0.027921, 0.467317, -1.75152, -0.121064, 0.712114, 0.909387, 5.3152)
+
+[node name="RobotArmAnim6" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.201399, -1.4337, 0.667507, -0.959844, -0.560607, -0.0114206, 0.195291, -1.2768, -0.744516, 4.10268, -0.371743, 3.56147)
+
+[node name="RobotArmAnim7" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.220075, -1.84118, 0.322621, -0.969753, -0.341358, 0.174492, -0.105571, -0.702528, -0.930305, 5.49004, -0.486257, 2.12252)
+
+[node name="RobotArmAnim8" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.279857, -1.91912, 0.0304547, -0.959844, -0.560607, -0.0114206, 0.0194949, -0.0520711, -0.999471, 5.71809, -0.371743, 0.147724)
+
+[node name="RobotArmAnim9" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.48099, -0.73344, 0.796344, -0.841183, -0.898078, 0.301288, 0.247101, -1.62958, -0.524463, 2.43745, 1.58855, 4.74506)
+
+[node name="RobotArmAnim10" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.582018, -1.38311, 0.427793, -0.796983, -1.17915, 0.131219, 0.161471, -0.83463, -0.894302, 4.29122, 1.67885, 2.45868)
+
+[node name="RobotArmAnim11" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.533407, -1.69131, 0.0186395, -0.83574, -1.047, 0.165788, -0.130441, -0.208021, -0.985986, 5.44626, 1.36138, 0.722552)
+
+[node name="RobotArmAnim12" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.441271, -1.73726, -0.225308, -0.896913, -0.869933, -0.0797028, -0.0287694, 0.474505, -0.971022, 4.93481, 0.885873, -1.25992)
+
+[node name="RobotArmAnim13" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(-0.462524, 1.77224, 0.0293263, -0.841183, -0.898078, 0.301288, 0.280147, 0.229369, 0.953082, -5.01028, 1.39133, -0.974468)
+
+[node name="RobotArmAnim14" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(-0.442541, 1.43568, 0.537457, -0.796983, -1.17915, 0.131219, 0.411065, -0.740548, 0.83302, -4.03455, 1.48163, 1.80257)
+
+[node name="RobotArmAnim15" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(-0.168452, 1.06354, 0.829968, -0.83574, -1.047, 0.165788, 0.522649, -1.33142, 0.532605, -3.16126, 1.16416, 3.69615)
+
+[node name="RobotArmAnim16" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(-0.29566, 0.397411, 0.934399, -0.791177, -1.19821, -0.12294, 0.535372, -1.55125, 0.334343, -1.2048, 1.62651, 4.29952)
 
 [node name="Egg" type="Node3D" parent="."]
 
 [node name="Egg" parent="Egg" instance=ExtResource("1_0ovjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.85984, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.61693, 0)
+
+[node name="EggManager" type="Node3D" parent="Egg"]

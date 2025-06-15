@@ -110,3 +110,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96747, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arm/Cylinder/Area"]
 shape = SubResource("BoxShape3D_1yj20")
+
+[connection signal="area_entered" from="Arm/Cylinder/Area" to="." method="_on_area_area_entered"]
