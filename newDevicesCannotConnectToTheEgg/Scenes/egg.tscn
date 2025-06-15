@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://bjqocm1e2a7rm"]
+[gd_scene load_steps=9 format=4 uid="uid://bjqocm1e2a7rm"]
 
 [ext_resource type="Script" uid="uid://clh0la0ttsup4" path="res://Scripts/egg.gd" id="1_jdgtd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgq1g"]
 margin = 0.0
-radius = 0.508333
+radius = 0.518899
 height = 1.40565
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jdgtd"]
+friction = 0.4
+bounce = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdgtd"]
 grow_amount = 1.231
@@ -36,6 +40,10 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vgq1g"]
 points = PackedVector3Array(0.0900365, 0.35623, 0.42037, -0.0919359, 0.00382634, -0.490613, -0.153229, 0.00403715, -0.474955, -0.0449785, 0.670922, -0.134815, 0.490615, 0.0038245, -0.0919184, -0.426441, 0.00606487, 0.258887, -0.374603, 0.4611, 0.0299436, 0.31223, 0.504861, -0.148679, 0.30422, 0.0065545, 0.395447, 0.311445, 0.474803, 0.192815, -0.119393, 0.565081, 0.268559, -0.422043, 0.160417, -0.241107, 0.18015, 0.281295, -0.42033, -0.17815, 0.445228, -0.341442, -0.153229, 0.00403715, 0.474955, -0.490615, 0.0038245, -0.0919184, 0.118835, 0.65318, 0.133605, 0.30422, 0.0065545, -0.395447, -0.268616, 0.341394, 0.343159, 0.468397, 0.190224, 0.105719, 0.0744434, 0.534825, -0.312638, 0.389239, 0.281496, -0.239406, -0.268727, 0.580102, -0.0746265, -0.452981, 0.265812, 0.0905217, -0.120019, 0.67121, 0.0749852, -0.135645, 0.281064, -0.436867, 0.343721, 0.251726, 0.313791, 0.193633, 0.639134, -0.0595246, 0.420665, 0.371257, -0.0449851, -0.403904, 0.341375, -0.164473, 0.0919359, 0.00382634, 0.490613, -0.0905565, 0.265797, 0.452978)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1iuog"]
+friction = 0.4
+bounce = 0.8
+
 [node name="Egg" type="Node3D"]
 script = ExtResource("1_jdgtd")
 
@@ -45,6 +53,7 @@ script = ExtResource("1_jdgtd")
 shape = SubResource("CapsuleShape3D_vgq1g")
 
 [node name="Seg1" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_jdgtd")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Seg1"]
 mesh = SubResource("ArrayMesh_vgq1g")
@@ -54,6 +63,7 @@ shape = SubResource("ConvexPolygonShape3D_vgq1g")
 
 [node name="Seg2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_1iuog")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Seg2"]
 mesh = SubResource("ArrayMesh_vgq1g")
