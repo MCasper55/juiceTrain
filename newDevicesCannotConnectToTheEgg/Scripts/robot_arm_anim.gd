@@ -8,6 +8,7 @@ func _ready():
 	anims.speed_scale = 1
 	await get_tree().create_timer(randf_range(1, 8)).timeout
 	extend()
+	eggManager.connect("eggCrack", reverse) #if it starts to break, move this back into the extend function
 
 func reverse():
 	if justConnected == 0:
@@ -30,4 +31,3 @@ func _on_area_area_entered(area):
 func extend():
 	if eggManager.someoneConnected == 0:
 		anims.play("extend")
-		eggManager.connect("eggCrack", reverse)
