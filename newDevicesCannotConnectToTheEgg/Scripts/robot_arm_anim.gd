@@ -7,16 +7,11 @@ var justConnected = 0
 func _ready():
 	anims.speed_scale = 1
 	await get_tree().create_timer(randf_range(1, 8)).timeout
-	if eggManager.someoneConnected == 0:
-		anims.play("extend")
-		eggManager.connect("eggCrack", stop)
-	
+	extend()
 
-
-func stop():
+func reverse():
 	if justConnected == 0:
-		anims.speed_scale = 8
-		anims.play_backwards("extend")
+		anims.speed_scale = -8
 
 
 func _on_area_area_entered(area):
@@ -24,3 +19,15 @@ func _on_area_area_entered(area):
 		justConnected = 1
 		eggManager.someoneConnected = 1
 		anims.pause()
+	if area.is_in_group("stopsDevices"):
+		anims.speed_scale = 8
+		anims.play_backwards("extend")
+		await anims.animation_finished
+		anims.speed_scale = 1
+		await get_tree().create_timer(randf_range(1, 8)).timeout
+		extend()
+
+func extend():
+	if eggManager.someoneConnected == 0:
+		anims.play("extend")
+		eggManager.connect("eggCrack", reverse)

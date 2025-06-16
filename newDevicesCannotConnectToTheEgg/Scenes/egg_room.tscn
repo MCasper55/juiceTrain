@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bicurmws3yvrj"]
+[gd_scene load_steps=14 format=3 uid="uid://bicurmws3yvrj"]
 
 [ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Scenes/egg.tscn" id="1_0ovjy"]
+[ext_resource type="PackedScene" uid="uid://chj0x6tpc5tyv" path="res://Scenes/device_stopper.tscn" id="1_4afia"]
+[ext_resource type="Script" uid="uid://b42otttjctfch" path="res://Scenes/egg_room.gd" id="1_ximd7"]
 [ext_resource type="PackedScene" uid="uid://2xlhv5m41m67" path="res://Scenes/robot_arm_anim.tscn" id="2_fesqg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1qvn"]
@@ -30,7 +32,47 @@ grow_amount = -16.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4afia"]
 grow_amount = 1.368
 
+[sub_resource type="Animation" id="Animation_4afia"]
+resource_name = "spin"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1, 1.5), Vector3(1.5, -1, 0), Vector3(0, -1, -1.5), Vector3(-1.5, -1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ximd7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy5ji"]
+_data = {
+&"RESET": SubResource("Animation_ximd7"),
+&"spin": SubResource("Animation_4afia")
+}
+
 [node name="EggRoom" type="Node3D"]
+script = ExtResource("1_ximd7")
 
 [node name="World" type="Node3D" parent="."]
 
@@ -92,6 +134,15 @@ outer_radius = 0.307097
 sides = 16
 ring_sides = 8
 smooth_faces = false
+
+[node name="DeviceStopper" parent="Room" instance=ExtResource("1_4afia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Room/DeviceStopper"]
+libraries = {
+&"": SubResource("AnimationLibrary_iy5ji")
+}
+autoplay = "spin"
 
 [node name="Devices" type="Node3D" parent="."]
 
