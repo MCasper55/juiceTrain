@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bicurmws3yvrj"]
+[gd_scene load_steps=15 format=3 uid="uid://bicurmws3yvrj"]
 
 [ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Scenes/egg.tscn" id="1_0ovjy"]
 [ext_resource type="PackedScene" uid="uid://chj0x6tpc5tyv" path="res://Scenes/device_stopper.tscn" id="1_4afia"]
 [ext_resource type="Script" uid="uid://b42otttjctfch" path="res://Scenes/egg_room.gd" id="1_ximd7"]
 [ext_resource type="PackedScene" uid="uid://2xlhv5m41m67" path="res://Scenes/robot_arm_anim.tscn" id="2_fesqg"]
+[ext_resource type="PackedScene" uid="uid://cfwumellrj4mp" path="res://Scenes/shader.tscn" id="2_iy5ji"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s1qvn"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -91,14 +92,15 @@ shadow_enabled = true
 [node name="SpotLight3D" type="SpotLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.11427, 0)
 light_color = Color(1, 1, 0.890196, 1)
-light_energy = 3.23
+light_energy = 6.115
 light_volumetric_fog_energy = 16.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.012
-shadow_normal_bias = 0.0
+shadow_bias = 0.0
+shadow_normal_bias = 0.84
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = 16.0
-shadow_blur = 7.541
+shadow_blur = 10.0
 spot_range = 9.47
 spot_attenuation = -0.74
 spot_angle = 55.05
@@ -114,6 +116,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.85401, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorBreak"]
 shape = SubResource("BoxShape3D_fesqg")
 debug_color = Color(0.903173, 0.000148628, 0.753945, 0.42)
+
+[node name="Pixelshader" parent="World" instance=ExtResource("2_iy5ji")]
 
 [node name="Room" type="Node3D" parent="."]
 
