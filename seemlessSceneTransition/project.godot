@@ -11,4 +11,5 @@ config_version=5
 [application]
 
 config/name="seemlessSceneTransition"
+run/main_scene="uid://ceonid5xs2j1l"
 config/features=PackedStringArray("4.4", "Forward Plus")

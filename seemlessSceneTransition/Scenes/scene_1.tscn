@@ -6,10 +6,12 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
 size = Vector3(5, 0.025, 5)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGBox3D"]
-transform = Transform3D(0.27532, -0.4293, 0, 0.4293, 0.27532, 0, 0, 0, 0.51, 0, 1.32729, 0)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(0.27532, -0.4293, 0, 0.4293, 0.27532, 0, 0, 0, 0.51, 0, 0.693073, 0)
 polygon = PackedVector2Array(-0.628089, -0.146814, 0.391801, 1.4384, 1.51653, 1.29186, -0.359523, 1.69053)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.51, 0, 0, 0, 0.51, 0, 0, 0, 0.51, 0, 0.945594, 0.193526)
-text = "irregular polygon"
+transform = Transform3D(0.494879, 0.123268, 0, -0.0960539, 0.385624, -0.319637, -0.0772569, 0.31016, 0.397407, 0, 0.945594, 0.193526)
+text = "irregular polygon
+of sorts"
+outline_size = 52

@@ -1,4 +1,46 @@
-[gd_scene format=3 uid="uid://d1tvd1irj463c"]
+[gd_scene load_steps=6 format=3 uid="uid://d1tvd1irj463c"]
+
+[ext_resource type="Script" uid="uid://cgx7u8dgodd77" path="res://Scenes/door.gd" id="1_pkyfe"]
+
+[sub_resource type="Animation" id="Animation_xk04q"]
+resource_name = "open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.709), Vector3(-1.141, 0, -1.709)]
+}
+
+[sub_resource type="Animation" id="Animation_pkyfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.709)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxpru"]
+_data = {
+&"RESET": SubResource("Animation_pkyfe"),
+&"open": SubResource("Animation_xk04q")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xk04q"]
+size = Vector3(0.938538, 1.08887, 0.465897)
 
 [node name="Train" type="Node3D"]
 
@@ -6,6 +48,7 @@
 
 [node name="TrainBox1" type="CSGBox3D" parent="Boxes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129944, 0.725991, 0)
+use_collision = true
 size = Vector3(1.25989, 1.47198, 3.50378)
 
 [node name="BoxHole" type="CSGBox3D" parent="Boxes/TrainBox1"]
@@ -32,3 +75,76 @@ size = Vector3(1.30417, 0.695912, 0.418459)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086, -1.2)
 operation = 2
 size = Vector3(1.30417, 0.695912, 0.418459)
+
+[node name="Door" type="Node3D" parent="Boxes/TrainBox1"]
+
+[node name="Door" type="CSGBox3D" parent="Boxes/TrainBox1/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.709)
+size = Vector3(1.1, 1.4, 0.1)
+script = ExtResource("1_pkyfe")
+
+[node name="Anim" type="AnimationPlayer" parent="Boxes/TrainBox1/Door/Door"]
+libraries = {
+&"": SubResource("AnimationLibrary_nxpru")
+}
+
+[node name="DetectArea" type="Area3D" parent="Boxes/TrainBox1/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.709)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/TrainBox1/Door/DetectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093689, 0.0444336, 0.159761)
+shape = SubResource("BoxShape3D_xk04q")
+
+[node name="Door2" type="Node3D" parent="Boxes/TrainBox1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.38191)
+
+[node name="Door" type="CSGBox3D" parent="Boxes/TrainBox1/Door2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.709)
+size = Vector3(1.1, 1.4, 0.1)
+script = ExtResource("1_pkyfe")
+
+[node name="Anim" type="AnimationPlayer" parent="Boxes/TrainBox1/Door2/Door"]
+libraries = {
+&"": SubResource("AnimationLibrary_nxpru")
+}
+
+[node name="DetectArea" type="Area3D" parent="Boxes/TrainBox1/Door2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.709)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes/TrainBox1/Door2/DetectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093689, 0.0444336, 0.159761)
+shape = SubResource("BoxShape3D_xk04q")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.139138, 1.30595, -0.795265)
+light_color = Color(1, 0.945098, 0.788235, 1)
+light_specular = 1.725
+spot_range = 2.052
+spot_attenuation = 2.0
+spot_angle = 45.74
+spot_angle_attenuation = 1.10957
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.139138, 1.30595, 0.0207427)
+light_color = Color(1, 0.945098, 0.788235, 1)
+light_specular = 1.725
+spot_range = 2.052
+spot_attenuation = 2.0
+spot_angle = 45.74
+spot_angle_attenuation = 1.10957
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.139138, 1.30595, 1.0081)
+light_color = Color(1, 0.945098, 0.788235, 1)
+light_specular = 1.725
+spot_range = 2.052
+spot_attenuation = 2.0
+spot_angle = 45.74
+spot_angle_attenuation = 1.10957
+
+[connection signal="body_entered" from="Boxes/TrainBox1/Door/DetectArea" to="Boxes/TrainBox1/Door/Door" method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="Boxes/TrainBox1/Door/DetectArea" to="Boxes/TrainBox1/Door/Door" method="_on_detect_area_body_exited"]
+[connection signal="body_entered" from="Boxes/TrainBox1/Door2/DetectArea" to="Boxes/TrainBox1/Door2/Door" method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="Boxes/TrainBox1/Door2/DetectArea" to="Boxes/TrainBox1/Door2/Door" method="_on_detect_area_body_exited"]
