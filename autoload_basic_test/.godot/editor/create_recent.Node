@@ -1,0 +1,12 @@
+Node2D
+AnimationPlayer
+Marker2D
+SubViewport
+MeshInstance2D
+Control
+StaticBody2D
+CollisionShape2D
+Camera2D
+Area2D
+MeshInstance3D
+CharacterBody2D
