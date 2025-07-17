@@ -4,14 +4,19 @@ extends Node
 
 @onready var areas = $Areas
 
-@onready var detachAnim = $DetachAnim/DetachAnim
 
-@onready var detach_anim_marker = $DetachAnim/DetachAnimMarker
 
+@onready var detach_manager = $DetachManager
+
+@onready var detachAnim = $DetachManager/DetachAnim
+
+@onready var detach_anim_marker = $DetachManager/DetachAnimMarker
+
+#not to be confused with global.next_scene: this one is used to literally instantiate the next scene
+#for seemless transition between scenes. the global one is used to keep track of the next scene
+var next_scene
 
 var rand
-
-var playerlerp = 0
 
 var detaching = 0
 
@@ -27,28 +32,21 @@ func goto_scene(path):
 	detach()
 
 func _deferred_goto_scene(path):
-	# It is now safe to remove the current scene.
+	
+	if Global.previous_scene != null:
+		Global.previous_scene.queue_free()
+	
 	Global.previous_scene = current_scene
-	
-	Global.previous_scene
-	
-	playerlerp = 1
 	
 	pos -= 1200
 	
-	var s = load(path)
-	
-	current_scene = s.instantiate()
-	
-	print(current_scene)
-	
-	areas.add_child(current_scene)
+	current_scene = next_scene
 	
 	current_scene.position.x = pos
 	
-	print(current_scene.position.x)
+	detach_manager.position.x = pos
 	
-	print(current_scene)
+	print("current scene x: " + str(current_scene.position.x))
 	
 	pick_next_scene()
 
@@ -67,20 +65,31 @@ func pick_next_scene():
 
 	elif current_scene.is_in_group("not_home"):
 		Global.next_scene = "res://home.tscn"
-	print(Global.next_scene)
+		
+	var n = load(Global.next_scene)
+	
+	next_scene = n.instantiate()
+	
+	areas.add_child(next_scene)
+	
+	next_scene.position.x = pos - 1200
+	#print(Global.next_scene)
 
 
 func detach():
+	detachAnim.stop()
 	detachAnim.play("detach")
 	detaching = 1
 
 
 func _process(delta):
 	if detaching == 1:
-		Global.previous_scene.position = detach_anim_marker.position
+		Global.previous_scene.position = detach_anim_marker.global_position
 		
 
 
 func _on_detach_anim_animation_finished(detach):
 	detaching = 0
+	detachAnim.stop()
+	print(detach_anim_marker.global_position.x)
 	Global.previous_scene.free()

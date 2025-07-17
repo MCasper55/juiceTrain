@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=2
+
 [global_group]
 
 not_home="If the scene is not a home cart"

@@ -64,8 +64,4 @@ position = Vector2(595, 639)
 scale = Vector2(1231.5, 174.5)
 shape = SubResource("RectangleShape2D_c5w0c")
 
-[node name="LerpMarker" type="Marker2D" parent="."]
-position = Vector2(950, 293)
-gizmo_extents = 40.0
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -15,6 +15,4 @@ func _process(delta):
 
 
 func reset():
-	print("1")
 	Global.current_scene = areas.get_child(0)
-	print("Ok!")

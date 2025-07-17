@@ -22,7 +22,4 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	#if World.playerlerp == 1:
-		#position = lerp(position, World.next_scene.position, 3 * delta)
-
 	move_and_slide()
