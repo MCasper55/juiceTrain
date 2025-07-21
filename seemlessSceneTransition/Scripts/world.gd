@@ -25,6 +25,7 @@ var pos = 0
 func _ready():
 	pick_next_scene()
 	Global.goto_scene.connect(goto_scene)
+	Global.detach_complete.connect(detach_complete)
 	#Engine.time_scale = 0.1
 
 func goto_scene(path):
@@ -84,11 +85,10 @@ func detach():
 
 func _process(delta):
 	if detaching == 1:
-		Global.previous_scene.position = detach_anim_marker.global_position
+		Global.previous_scene.position.z = detach_anim_marker.global_position.z
 		
 
-
-func _on_detach_anim_animation_finished(detach):
+func detach_complete():
 	detaching = 0
 	detachAnim.stop()
 	print(detach_anim_marker.global_position.z)

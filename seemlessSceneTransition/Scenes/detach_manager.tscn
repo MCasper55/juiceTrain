@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm6vpovq7p22b"]
+[gd_scene load_steps=5 format=3 uid="uid://cm6vpovq7p22b"]
+
+[ext_resource type="Script" uid="uid://dx2n4by1m72qa" path="res://Scripts/detach_manager.gd" id="1_h6ido"]
 
 [sub_resource type="Animation" id="Animation_aqk2v"]
 length = 0.001
@@ -39,6 +41,7 @@ _data = {
 }
 
 [node name="DetachManager" type="Node3D"]
+script = ExtResource("1_h6ido")
 
 [node name="DetachAnimMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
@@ -48,3 +51,5 @@ gizmo_extents = 1.0
 libraries = {
 &"": SubResource("AnimationLibrary_aqk2v")
 }
+
+[connection signal="animation_finished" from="DetachAnim" to="." method="_on_detach_anim_animation_finished"]

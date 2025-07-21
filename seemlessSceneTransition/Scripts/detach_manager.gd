@@ -1,19 +1,5 @@
-extends Node
+extends Node3D
 
-var next_scene
-
-var previous_scene
-
-signal goto_scene(path)
-
-signal detach_complete
-
-var scene_lengths = {
-	
-	"res://Scenes/scene_1.tscn": 5,
-	"res://Scenes/scene_2.tscn": 5,
-	
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_detach_anim_animation_finished(detach):
+	Global.detach_complete.emit()

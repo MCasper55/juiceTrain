@@ -4,6 +4,8 @@ func _ready():
 	pass
 
 
-func _on_area_2d_body_entered(body):
-	Global.goto_scene.emit("res://home.tscn")
-	queue_free()
+func _on_body_entered(body):
+	if body.name == "Player":
+		Global.goto_scene.emit("res://home.tscn")
+		queue_free()
+		print("i done it")
