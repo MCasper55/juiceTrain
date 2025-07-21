@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceonid5xs2j1l"]
+[gd_scene load_steps=5 format=3 uid="uid://ceonid5xs2j1l"]
 
-[ext_resource type="PackedScene" uid="uid://d1tvd1irj463c" path="res://Scenes/train.tscn" id="1_a02cp"]
-[ext_resource type="Script" uid="uid://cp43s4ajf25go" path="res://Scenes/scene_switcher.gd" id="2_go701"]
+[ext_resource type="Script" uid="uid://bfkmrgxh64w2v" path="res://Scripts/world.gd" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://d1tvd1irj463c" path="res://Scenes/home.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://c3rdxwrvpg6u5" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cm6vpovq7p22b" path="res://Scenes/detach_manager.tscn" id="4_8j60k"]
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_5a7ea")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999998, 0.00038351, -0.00174462, 0, 0.97668, 0.214698, 0.00178627, -0.214698, 0.976679, 0.154188, 0.903725, 2.29317)
+[node name="Areas" type="Node3D" parent="."]
 
-[node name="Train" parent="." instance=ExtResource("1_a02cp")]
+[node name="Train" parent="Areas" instance=ExtResource("1_a02cp")]
 
-[node name="SceneSwitcher" type="Node3D" parent="."]
-script = ExtResource("2_go701")
+[node name="Player" parent="." instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75192, 0)
+
+[node name="DetachManager" parent="." instance=ExtResource("4_8j60k")]

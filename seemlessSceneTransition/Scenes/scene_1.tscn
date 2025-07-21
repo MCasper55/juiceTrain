@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bl4xlb7y8jibw"]
 
-[node name="Scene1" type="Node3D"]
+[node name="Scene1" type="Node3D" groups=["not_home"]]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
+use_collision = true
 size = Vector3(5, 0.025, 5)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]

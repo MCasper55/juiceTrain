@@ -28,6 +28,21 @@ albedo_color = Color(1, 0.714912, 0.991696, 0)
 material = SubResource("StandardMaterial3D_ddv0c")
 size = Vector3(0.1, 0.1, 0.1)
 
+[sub_resource type="Animation" id="Animation_wb0eg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4tgxl"]
 resource_name = "spin"
 length = 1.5
@@ -45,31 +60,17 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_wb0eg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o3vvr"]
 _data = {
 &"RESET": SubResource("Animation_wb0eg"),
 &"spin": SubResource("Animation_4tgxl")
 }
 
-[node name="Scene2" type="Node3D"]
+[node name="Scene2" type="Node3D" groups=["not_home"]]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
+use_collision = true
 size = Vector3(5, 0.025, 5)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

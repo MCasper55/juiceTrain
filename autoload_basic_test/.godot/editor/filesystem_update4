@@ -1,13 +1,7 @@
-res://home.tscn
 res://lblstngs.tres
+res://world.tscn
+res://home.tscn
 res://scene_2.tscn
 res://player.tscn
-res://world.tscn
-res://host.tscn
 res://scene_3.tscn
-res://world.gd
-res://areas.gd
-res://character_body_2d.gd
-res://scene.gd
-res://home.gd
-res://global.gd
+res://detach_manager.tscn
