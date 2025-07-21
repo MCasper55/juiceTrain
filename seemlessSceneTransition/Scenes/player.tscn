@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://binop5ajseaie" path="res://Scripts/playermovement.gd" id="1_suesc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7l837"]
+radius = 0.3
 height = 2.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ntmi"]
+radius = 0.3
 height = 2.3
 
 [node name="Player" type="Node3D"]

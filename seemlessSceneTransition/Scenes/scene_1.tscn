@@ -1,4 +1,21 @@
-[gd_scene format=3 uid="uid://bl4xlb7y8jibw"]
+[gd_scene load_steps=6 format=3 uid="uid://bl4xlb7y8jibw"]
+
+[ext_resource type="PackedScene" uid="uid://brmybqum2o0px" path="res://Scenes/scene_transition_area.tscn" id="1_23sq3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qtt1"]
+friction = 0.0
+bounce = 1.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qtt1"]
+albedo_color = Color(0, 0.435294, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_23sq3"]
+material = SubResource("StandardMaterial3D_1qtt1")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1qtt1"]
+points = PackedVector3Array(0.213184, 0.121617, 0.0458794, -0.244394, -0.0458482, -0.0225957, -0.235753, -0.0685128, -0.0453504, 0.0381797, -0.166638, 0.18209, 0.105885, -0.113145, -0.195799, -0.098597, 0.228232, 0.0230806, -0.0224624, 0.129243, -0.212554, -0.0680421, 0.0759164, 0.228005, 0.0990941, -0.22807, -0.0224645, -0.105478, -0.181336, -0.135664, -0.135556, -0.181178, 0.105931, 0.220803, -0.0455878, 0.106698, 0.213118, 0.0151914, -0.128921, 0.0990973, 0.228078, -0.0224652, 0.0914859, 0.12161, 0.197866, -0.158804, 0.0378813, -0.189069, -0.219777, 0.0758856, 0.0913354, -0.188602, 0.136032, -0.0903546, -0.151048, -0.060555, 0.189468, 0.0232579, -0.0458558, -0.24436, 0.0611408, -0.0532144, 0.235979, 0.136145, 0.12828, -0.165679, 0.228081, -0.0910574, -0.0452198, -0.0376937, 0.205208, 0.137094, -0.0303007, -0.24507, 0.0385787, -0.0300663, 0.220388, -0.113657, 0.135994, -0.180941, 0.105793, 0.0231076, -0.212735, -0.12882, 0.0760745, 0.219765, 0.0911983, -0.151493, -0.19737, -0.0224288, -0.12881, -0.0834983, -0.197107, -0.21952, -0.0909469, 0.0760821)
 
 [node name="Scene1" type="Node3D" groups=["not_home"]]
 
@@ -7,12 +24,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
 use_collision = true
 size = Vector3(5, 0.025, 5)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(0.27532, -0.4293, 0, 0.4293, 0.27532, 0, 0, 0, 0.51, 0, 0.693073, 0)
-polygon = PackedVector2Array(-0.628089, -0.146814, 0.391801, 1.4384, 1.51653, 1.29186, -0.359523, 1.69053)
-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(0.494879, 0.123268, 0, -0.0960539, 0.385624, -0.319637, -0.0772569, 0.31016, 0.397407, 0, 0.945594, 0.193526)
-text = "irregular polygon
-of sorts"
+text = "blue ball!"
 outline_size = 52
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_1qtt1")
+linear_velocity = Vector3(0, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24271, 0)
+mesh = SubResource("SphereMesh_23sq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24271, 0)
+shape = SubResource("ConvexPolygonShape3D_1qtt1")
+
+[node name="SceneTransitionArea" parent="." instance=ExtResource("1_23sq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58843, -2.28243)
