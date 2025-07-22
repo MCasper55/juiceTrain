@@ -4,7 +4,7 @@ extends Node
 
 @onready var areas = $Areas
 
-
+@onready var despawn_zone = $Areas/DespawnZone
 
 @onready var detach_manager = $DetachManager
 
@@ -26,6 +26,7 @@ func _ready():
 	pick_next_scene()
 	Global.goto_scene.connect(goto_scene)
 	Global.detach_complete.connect(detach_complete)
+	Global.current_scene = $Areas.get_child(0)
 	#Engine.time_scale = 0.1
 
 func goto_scene(path):
@@ -43,9 +44,13 @@ func _deferred_goto_scene(path):
 	
 	current_scene = next_scene
 	
+	Global.current_scene = next_scene
+	
 	current_scene.position.z = pos
 	
 	detach_manager.position.z = pos
+	
+	despawn_zone.position.z = pos
 	
 	print("current scene x: " + str(current_scene.position.z))
 	

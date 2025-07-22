@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceonid5xs2j1l"]
+[gd_scene load_steps=8 format=3 uid="uid://ceonid5xs2j1l"]
 
 [ext_resource type="Script" uid="uid://bfkmrgxh64w2v" path="res://Scripts/world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://d1tvd1irj463c" path="res://Scenes/home.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://c3rdxwrvpg6u5" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://di3tluq51o8in" path="res://Scenes/despawn_zone.tscn" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://cm6vpovq7p22b" path="res://Scenes/detach_manager.tscn" id="4_8j60k"]
 
 [sub_resource type="Environment" id="Environment_8j60k"]
@@ -25,6 +26,11 @@ script = ExtResource("1_5a7ea")
 [node name="Areas" type="Node3D" parent="."]
 
 [node name="Train" parent="Areas" instance=ExtResource("1_a02cp")]
+
+[node name="DespawnZone" parent="Areas" instance=ExtResource("3_fo5ed")]
+transform = Transform3D(1.6, 0, 0, 0, 0.025, 0, 0, 0, 6.5, 0, -0.853225, 0)
+
+[node name="PersistantObjects" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75192, 0)

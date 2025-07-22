@@ -4,7 +4,11 @@ var next_scene
 
 var previous_scene
 
+var current_scene
+
 signal goto_scene(path)
+
+signal ball_reparent
 
 signal detach_complete
 

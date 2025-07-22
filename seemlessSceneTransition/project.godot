@@ -20,7 +20,6 @@ Global="*res://Scripts/global.gd"
 
 [display]
 
-window/size/mode=3
 window/vsync/vsync_mode=0
 
 [global_group]
