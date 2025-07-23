@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://oqlikm31c1s2"]
+
+[ext_resource type="Script" uid="uid://b1xurpdnwnwqb" path="res://Scripts/timer.gd" id="1_pvhx5"]
+[ext_resource type="FontFile" uid="uid://cheyxlcb8du5p" path="res://Other/14 Segment LED Regular.ttf" id="2_ycw00"]
+
+[node name="Timer" type="Node3D"]
+script = ExtResource("1_pvhx5")
+
+[node name="Label3D" type="Label3D" parent="."]
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -91,7 +91,6 @@ func detach():
 func _process(delta):
 	if detaching == 1:
 		Global.previous_scene.position.z = detach_anim_marker.global_position.z
-		
 
 func detach_complete():
 	detaching = 0
