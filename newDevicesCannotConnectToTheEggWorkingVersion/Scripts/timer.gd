@@ -10,11 +10,13 @@ var number
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	eggManager.timerstart.connect(start)
+
+func start():
 	await get_tree().create_timer(5).timeout
-	timer.start(20)
+	timer.start(30.5)
 	monitoring = 1
 	eggManager.begin.emit()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,4 +31,6 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	eggManager.emit_signal("eggCrack")
+	if eggManager.someoneConnected == 0:
+		eggManager.eggCrack.emit(0)
+		eggManager.someoneConnected = 1

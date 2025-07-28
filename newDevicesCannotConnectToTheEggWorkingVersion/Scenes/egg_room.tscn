@@ -1,11 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bicurmws3yvrj"]
+[gd_scene load_steps=26 format=3 uid="uid://bicurmws3yvrj"]
 
 [ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Scenes/egg.tscn" id="1_0ovjy"]
-[ext_resource type="PackedScene" uid="uid://chj0x6tpc5tyv" path="res://Scenes/device_stopper.tscn" id="1_4afia"]
 [ext_resource type="Script" uid="uid://b42otttjctfch" path="res://Scripts/egg_room.gd" id="1_ximd7"]
+[ext_resource type="Script" uid="uid://byu5ts3f7lmlp" path="res://Scripts/stand.gd" id="2_ehajl"]
 [ext_resource type="PackedScene" uid="uid://2xlhv5m41m67" path="res://Scenes/robot_arm_anim.tscn" id="2_fesqg"]
+[ext_resource type="PackedScene" uid="uid://db2pf3pk00u66" path="res://Scenes/light.tscn" id="2_q4d83"]
 [ext_resource type="PackedScene" uid="uid://oqlikm31c1s2" path="res://Scenes/timer.tscn" id="3_iy5ji"]
+[ext_resource type="PackedScene" uid="uid://c5daybktsjlei" path="res://Scenes/platform.tscn" id="3_ny0y6"]
+[ext_resource type="Script" uid="uid://chfala2kpj1o7" path="res://Scripts/doorholes.gd" id="4_wqj4t"]
+[ext_resource type="PackedScene" uid="uid://cet3qj5abedkp" path="res://Scenes/walls.tscn" id="5_6nr31"]
 [ext_resource type="PackedScene" uid="uid://dlat0n1wff3tw" path="res://Player/player.tscn" id="6_ehajl"]
+[ext_resource type="PackedScene" uid="uid://qjbxvp5v1rr8" path="res://Scenes/walkways.tscn" id="7_8ny45"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fesqg"]
 size = Vector3(11.6747, 0.0928955, 11.8171)
@@ -13,10 +18,137 @@ size = Vector3(11.6747, 0.0928955, 11.8171)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesqg"]
 grow_amount = -16.0
 
+[sub_resource type="Animation" id="Animation_1gr0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.4, 2.692, 5.52)]
+}
+
+[sub_resource type="Animation" id="Animation_uvjjr"]
+resource_name = "exit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.5, 0), Vector3(0, 2.5, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.24901, 1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52), Vector3(1.4, 2.692, 5.52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gr0p"]
+_data = {
+&"RESET": SubResource("Animation_1gr0p"),
+&"exit": SubResource("Animation_uvjjr")
+}
+
+[sub_resource type="Animation" id="Animation_yec1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5a5t"]
+resource_name = "enter"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.86374, 1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52), Vector3(1.4, 2.692, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.5, 0), Vector3(0, 2.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1yyp"]
+_data = {
+&"RESET": SubResource("Animation_yec1i"),
+&"enter": SubResource("Animation_d5a5t")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ol0f"]
+size = Vector3(1, 2.7485, 0.0617371)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4afia"]
 grow_amount = 1.368
 
-[sub_resource type="Animation" id="Animation_ximd7"]
+[sub_resource type="Animation" id="Animation_ehajl"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -28,105 +160,168 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1, 1)]
+"values": [Vector3(0, -1.82119, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4afia"]
-resource_name = "spin"
-length = 3.0
-loop_mode = 1
-step = 0.1
+[sub_resource type="Animation" id="Animation_iy5ji"]
+resource_name = "standretract"
+length = 15.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 3, 15),
+"transitions": PackedFloat32Array(2, 2, 1),
 "update": 0,
-"values": [Vector3(0, -1, 0.8), Vector3(0.8, -1, 0), Vector3(0, -1, -0.8), Vector3(-0.8, -1, 0)]
+"values": [Vector3(0, -1.82119, 0), Vector3(0, -1.82119, 0), Vector3(0, -2.921, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iy5ji"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4d83"]
 _data = {
-&"RESET": SubResource("Animation_ximd7"),
-&"spin": SubResource("Animation_4afia")
+&"RESET": SubResource("Animation_ehajl"),
+&"standretract": SubResource("Animation_iy5ji")
 }
+
+[sub_resource type="Environment" id="Environment_q4d83"]
+background_mode = 1
+ambient_light_source = 1
+reflected_light_source = 1
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_sky_affect = 0.0
 
 [node name="EggRoom" type="Node3D"]
 script = ExtResource("1_ximd7")
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.91427, 0)
-light_color = Color(1, 1, 0.890196, 1)
-light_energy = 1.918
-light_indirect_energy = 0.0
-light_specular = 0.0
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.84
-shadow_reverse_cull_face = true
-shadow_transmittance_bias = 16.0
-shadow_blur = 10.0
-spot_range = 8.139
-spot_attenuation = -0.41
-spot_angle = 63.98
-spot_angle_attenuation = 4.0
-
 [node name="FloorBreak" type="Area3D" parent="World" groups=["CanBreakEgg"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.95401, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.72798, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorBreak"]
 shape = SubResource("BoxShape3D_fesqg")
 debug_color = Color(0.903173, 0.000148628, 0.753945, 0.42)
 
+[node name="Light" parent="World" instance=ExtResource("2_q4d83")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
+spot_angle = 22.34
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08982, -4.77477)
+use_collision = true
+size = Vector3(3.3, 0.26, 3.11708)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World"]
+transform = Transform3D(-1, 1.77636e-15, -8.74228e-08, -2.97871e-08, 0.940163, 0.340724, 8.21917e-08, 0.340724, -0.940163, -0.00213528, 0.193916, -7.83992)
+spot_range = 5.60456
+spot_angle = 40.7841
+
 [node name="Room" type="Node3D" parent="."]
 
 [node name="RoomCsg" type="CSGBox3D" parent="Room" groups=["CanBreakEgg"]]
-transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, 0, 0)
+transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, -3.14645, 0)
 use_collision = true
-size = Vector3(6, 4, 6)
+size = Vector3(6, 10.1096, 6)
 material = SubResource("StandardMaterial3D_fesqg")
 
 [node name="Room hole" type="CSGBox3D" parent="Room/RoomCsg"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.296179, 0)
 operation = 2
-size = Vector3(5.8, 3.8, 5.8)
+size = Vector3(5.8, 10.502, 5.8)
+
+[node name="TopHole" type="CSGCylinder3D" parent="Room/RoomCsg"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 5.00028, 0)
+operation = 2
+radius = 1.2
+height = 0.200104
+sides = 16
+
+[node name="Platform" parent="Room/RoomCsg" instance=ExtResource("3_ny0y6")]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0.00058198, 0)
+
+[node name="DoorholesManager" type="Node3D" parent="Room/RoomCsg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52062, 0)
+script = ExtResource("4_wqj4t")
 
 [node name="Doorholes" type="CSGBox3D" parent="Room/RoomCsg"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.4, 0)
 operation = 2
-size = Vector3(1.4, 3, 6)
+size = Vector3(1.4, 0.017, 5.52)
 
-[node name="CSGBox3D" type="CSGSphere3D" parent="Room"]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -1.625, 0)
-use_collision = true
-radius = 1.1
-radial_segments = 4
-material = SubResource("StandardMaterial3D_4afia")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Room/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.193, 0)
-operation = 2
-radius = 0.3
-rings = 4
-
-[node name="DeviceStopper" parent="Room" instance=ExtResource("1_4afia")]
-process_mode = 4
-visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room/DeviceStopper"]
+[node name="Exit" type="AnimationPlayer" parent="Room/RoomCsg"]
+root_node = NodePath("../DoorholesManager")
 libraries = {
-&"": SubResource("AnimationLibrary_iy5ji")
+&"": SubResource("AnimationLibrary_1gr0p")
 }
-autoplay = "spin"
+
+[node name="Enter" type="AnimationPlayer" parent="Room/RoomCsg"]
+root_node = NodePath("../DoorholesManager")
+libraries = {
+&"": SubResource("AnimationLibrary_m1yyp")
+}
+
+[node name="EnterArea" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.8225e-07, 2.52062, 4.37243)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/EnterArea"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 5.91889e-08, -0.0706635, -0.0360022)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="EnterArea2" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.03628e-07, 2.52062, 2.32923)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/EnterArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 0.201447)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="ExitArea" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.12198e-07, 2.52062, -0.899439)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/ExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 0.384317)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="ExitArea2" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.38686e-07, 2.52062, -2.73025)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/ExitArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 1.10373)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="Stand" type="CSGCylinder3D" parent="Room"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -1.82119, 0)
+use_collision = true
+radius = 0.062
+height = 3.13607
+smooth_faces = false
+material = SubResource("StandardMaterial3D_4afia")
+script = ExtResource("2_ehajl")
+
+[node name="Standhole" type="CSGSphere3D" parent="Room/Stand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56819, 0)
+operation = 2
+radius = 0.1
+radial_segments = 16
+rings = 16
+
+[node name="StandAnim" type="AnimationPlayer" parent="Room/Stand"]
+libraries = {
+&"": SubResource("AnimationLibrary_q4d83")
+}
 
 [node name="Timer" parent="Room" instance=ExtResource("3_iy5ji")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.54767, 2.88568)
+
+[node name="Walls" parent="Room" instance=ExtResource("5_6nr31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94937, 0)
+
+[node name="Walkways" parent="Room" instance=ExtResource("7_8ny45")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.99105, -0.0315164)
 
 [node name="Devices" type="Node3D" parent="."]
 transform = Transform3D(-0.417994, -0.90845, 0, 0.90845, -0.417994, 0, 0, 0, 1, 1.5, -0.5, 0)
@@ -277,7 +472,16 @@ transform = Transform3D(0.701318, -0.65921, 0.271288, -0.70184, -0.571899, 0.424
 [node name="EggManager" type="Node3D" parent="Egg"]
 
 [node name="Egg" parent="Egg" instance=ExtResource("1_0ovjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16119, 0)
 
 [node name="Player" parent="." instance=ExtResource("6_ehajl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.63651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.574248, -6.01761)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q4d83")
+
+[connection signal="body_entered" from="Room/RoomCsg/EnterArea" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/EnterArea2" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_2_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/ExitArea" to="Room/RoomCsg/DoorholesManager" method="_on_exit_area_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/ExitArea2" to="Room/RoomCsg/DoorholesManager" method="_on_exit_area_2_body_entered"]
+[connection signal="animation_finished" from="Room/Stand/StandAnim" to="Room/Stand" method="_on_stand_anim_animation_finished"]

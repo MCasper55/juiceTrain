@@ -7,8 +7,11 @@
 script = ExtResource("1_pvhx5")
 
 [node name="Label3D" type="Label3D" parent="."]
+layers = 2
+cast_shadow = 1
 shaded = true
 alpha_cut = 1
+alpha_scissor_threshold = 0.566
 texture_filter = 0
 modulate = Color(1, 0.268482, 0.208356, 1)
 text = "00"
@@ -19,5 +22,13 @@ text_direction = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.06731)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

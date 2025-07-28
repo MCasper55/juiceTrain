@@ -17,6 +17,7 @@ metadata/_edit_group_ = true
 [node name="Player" type="CharacterBody3D" parent="."]
 floor_stop_on_slope = false
 floor_max_angle = 0.698132
+platform_on_leave = 2
 script = ExtResource("1_suesc")
 
 [node name="Mesh" type="MeshInstance3D" parent="Player"]

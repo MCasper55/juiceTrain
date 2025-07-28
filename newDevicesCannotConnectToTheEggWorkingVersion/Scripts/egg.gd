@@ -9,9 +9,8 @@ extends Node3D
 var cracked = 0
 
 func _ready():
-	seg_1.freeze
-	seg_2.freeze
-
+	seg_1.gravity_scale = 0
+	seg_2.gravity_scale = 0
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("CanBreakEgg") and cracked == 0:
 		crack()
@@ -22,10 +21,11 @@ func _on_area_3d_body_entered(body):
 		crack()
 
 func crack():
-	seg_1.freeze_mode = false
-	seg_2.freeze_mode = false
+	seg_1.gravity_scale = 1
+	seg_2.gravity_scale = 1
+	seg_1.apply_central_impulse(Vector3(randf_range(-0.2, 0.2), randf_range(0, 0.5), randf_range(-0.2, 0.2)))
+	seg_2.apply_central_impulse(Vector3(randf_range(-0.2, 0.2), randf_range(0, 0.5), randf_range(-0.2, 0.2)))
 	cracked = 1
 	joint.queue_free()
-	print("yeehaw")
-	eggManager.emit_signal("eggCrack")
+	eggManager.eggCrack.emit(1)
 	eggManager.someoneConnected = 1

@@ -1,22 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlat0n1wff3tw"]
 
-[ext_resource type="Script" path="res://Player/playermovement.gd" id="1_suesc"]
+[ext_resource type="Script" uid="uid://binop5ajseaie" path="res://Player/playermovement.gd" id="1_suesc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7l837"]
 lightmap_size_hint = Vector2i(25, 23)
+radius = 0.3
 height = 2.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ntmi"]
+radius = 0.3
 height = 2.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8h54"]
-radius = 0.8
+radius = 0.7
 height = 2.8
 
 [node name="Player" type="Node3D"]
 metadata/_edit_group_ = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." groups=["CanBreakEgg"]]
 floor_stop_on_slope = false
 floor_max_angle = 0.698132
 script = ExtResource("1_suesc")

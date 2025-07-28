@@ -97,6 +97,7 @@ script = ExtResource("1_gurl2")
 [node name="Arm" type="Node3D" parent="."]
 
 [node name="Cylinder" type="CSGCylinder3D" parent="Arm"]
+cast_shadow = 0
 use_collision = true
 radius = 0.06
 height = 0.7
