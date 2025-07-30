@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3tluq51o8in"]
+
+[ext_resource type="Script" uid="uid://b0njberpc1qpo" path="res://Scripts/despawn_zone.gd" id="1_yj3dq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3eu83"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yj3dq"]
+size = Vector3(10, 10, 10)
+
+[node name="DespawnZone" type="Node3D"]
+script = ExtResource("1_yj3dq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_3eu83")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+visible = false
+mesh = SubResource("BoxMesh_yj3dq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -10,22 +10,26 @@ config_version=5
 
 [application]
 
-config/name="seemlessSceneTransition"
+config/name="MASTER"
 run/main_scene="uid://ceonid5xs2j1l"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
 Global="*res://Scripts/global.gd"
+eggManager="*res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/eggManager.gd"
 
 [display]
 
+window/size/mode=2
 window/vsync/vsync_mode=0
 
 [global_group]
 
 not_home=""
 home=""
+CanBreakEgg=""
+stopsDevices=""
 
 [input]
 

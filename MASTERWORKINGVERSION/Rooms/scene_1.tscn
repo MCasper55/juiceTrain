@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl4xlb7y8jibw"]
+
+[ext_resource type="PackedScene" uid="uid://brmybqum2o0px" path="res://Scenes/scene_transition_area.tscn" id="1_23sq3"]
+[ext_resource type="Script" uid="uid://bu5x6jn8nxuw3" path="res://Scripts/ball.gd" id="1_n8be1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1qtt1"]
+friction = 0.0
+bounce = 1.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qtt1"]
+albedo_color = Color(0, 0.435294, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_23sq3"]
+material = SubResource("StandardMaterial3D_1qtt1")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_23sq3"]
+radius = 0.25
+
+[node name="Scene1" type="Node3D" groups=["not_home"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
+use_collision = true
+size = Vector3(5, 0.025, 5)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.494879, 0.123268, 0, -0.0960539, 0.385624, -0.319637, -0.0772569, 0.31016, 0.397407, 0, 0.945594, 0.193526)
+text = "blue ball!"
+outline_size = 52
+
+[node name="Ball" type="RigidBody3D" parent="."]
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_1qtt1")
+linear_velocity = Vector3(0, 0, 2)
+script = ExtResource("1_n8be1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24271, 0)
+mesh = SubResource("SphereMesh_23sq3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24271, 0)
+shape = SubResource("SphereShape3D_23sq3")
+
+[node name="SceneTransitionArea" parent="." instance=ExtResource("1_23sq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58843, -2.28243)

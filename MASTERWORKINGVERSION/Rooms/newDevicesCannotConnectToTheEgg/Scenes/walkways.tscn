@@ -1,0 +1,161 @@
+[gd_scene load_steps=9 format=3 uid="uid://qjbxvp5v1rr8"]
+
+[ext_resource type="Script" uid="uid://da2if2qh1gdym" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/walkways.gd" id="1_s2w77"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8im6y"]
+size = Vector3(2.14154, 1.83636, 0.633667)
+
+[sub_resource type="Animation" id="Animation_joxwo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.45, 0.1, 2.1985)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.865)]
+}
+
+[sub_resource type="Animation" id="Animation_s2w77"]
+resource_name = "retract"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0.45, 0.1, 2.1985), Vector3(0.45, 0.1, 0.688)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.865), Vector3(0, 0, 0.595)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_joxwo"]
+_data = {
+&"RESET": SubResource("Animation_joxwo"),
+&"retract": SubResource("Animation_s2w77")
+}
+
+[sub_resource type="Animation" id="Animation_p7k0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.45, 0.1, 0.196)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_ykgxm"]
+resource_name = "extend"
+length = 8.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.45, 0.1, 0.136), Vector3(0.45, 0.1, 2.198)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.275), Vector3(0, 0, -1.865)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah2yc"]
+_data = {
+&"RESET": SubResource("Animation_p7k0l"),
+&"extend": SubResource("Animation_ykgxm")
+}
+
+[node name="Walkways" type="Node3D"]
+script = ExtResource("1_s2w77")
+
+[node name="Walkway" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 1.865)
+use_collision = true
+size = Vector3(0.45, 0.1, 2.1985)
+
+[node name="Detect" type="Area3D" parent="Walkway"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walkway/Detect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0289002, 0.602203, -0.250473)
+shape = SubResource("BoxShape3D_8im6y")
+
+[node name="AnimsRetract" type="AnimationPlayer" parent="Walkway"]
+libraries = {
+&"": SubResource("AnimationLibrary_joxwo")
+}
+
+[node name="Walkway2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, -0.275)
+use_collision = true
+size = Vector3(0.45, 0.1, 0.196)
+
+[node name="AnimsExtend" type="AnimationPlayer" parent="Walkway2"]
+libraries = {
+&"": SubResource("AnimationLibrary_ah2yc")
+}
+
+[connection signal="body_entered" from="Walkway/Detect" to="." method="_on_detect_body_entered"]
+[connection signal="animation_finished" from="Walkway/AnimsRetract" to="." method="_on_anims_retract_animation_finished"]
