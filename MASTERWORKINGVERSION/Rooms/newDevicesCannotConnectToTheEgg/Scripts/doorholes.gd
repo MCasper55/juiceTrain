@@ -43,3 +43,4 @@ func _on_exit_area_2_body_entered(body):
 func enableexit(bool):
 	if bool == 0:
 		exitarea.monitoring = true
+		

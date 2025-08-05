@@ -23,7 +23,7 @@ radius = 0.25
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655212, 0)
 use_collision = true
-size = Vector3(5, 0.025, 5)
+size = Vector3(5, 0.05, 5)
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(0.494879, 0.123268, 0, -0.0960539, 0.385624, -0.319637, -0.0772569, 0.31016, 0.397407, 0, 0.945594, 0.193526)

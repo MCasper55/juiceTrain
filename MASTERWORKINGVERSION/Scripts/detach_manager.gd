@@ -13,3 +13,4 @@ func _process(delta):
 
 func _on_detach_anim_animation_finished(detach):
 	Global.detach_complete.emit()
+	eggManager.someoneConnected = 0
