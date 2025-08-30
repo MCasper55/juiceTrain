@@ -1,0 +1,225 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxdcyo1iqjscb"]
+
+[ext_resource type="Script" uid="uid://65rvrkhgce1i" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/tv.gd" id="1_7o8st"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ckywi"]
+size = Vector2(1.92, 1.08)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ckywi"]
+viewport_path = NodePath("TV/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7o8st"]
+viewport_path = NodePath("TV/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckywi"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ckywi")
+emission_enabled = true
+emission_energy_multiplier = 3.33
+emission_texture = SubResource("ViewportTexture_7o8st")
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_7o8st"]
+file = "res://Rooms/newDevicesCannotConnectToTheEgg/Other/newdevicesvideo.ogv"
+
+[sub_resource type="Animation" id="Animation_rbehl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arm/CSGCylinder3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.05857, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arm/CSGCylinder3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.624097, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TV:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Arm/CSGCylinder3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Arm/CSGCylinder3D2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Arm:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7o8st"]
+resource_name = "waitnretract"
+length = 22.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arm/CSGCylinder3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.05857, 0), Vector3(0, 2.27166, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arm/CSGCylinder3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.624097, 0), Vector3(0, 1.709, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TV:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.315, -0.025)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Arm/CSGCylinder3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.523599, 0, 0), Vector3(1.309, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Arm/CSGCylinder3D2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(-1.309, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Arm:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(16, 22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.5, -0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87wvs"]
+_data = {
+&"RESET": SubResource("Animation_rbehl"),
+&"waitnretract": SubResource("Animation_7o8st")
+}
+
+[node name="Tv" type="Node3D"]
+script = ExtResource("1_7o8st")
+
+[node name="Arm" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 1.05857, 0)
+radius = 0.101
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Arm"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.624097, 0)
+radius = 0.101
+
+[node name="TV" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="TV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.36588, 0.531202)
+size = Vector3(1.92, 1.08, 0.233)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="TV/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.186594)
+size = Vector3(1.515, 0.81, 0.383)
+
+[node name="Screen" type="MeshInstance3D" parent="TV/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.123)
+mesh = SubResource("PlaneMesh_ckywi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ckywi")
+
+[node name="SubViewport" type="SubViewport" parent="TV"]
+size = Vector2i(1920, 1080)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TV/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Video" type="VideoStreamPlayer" parent="TV/SubViewport/SubViewportContainer"]
+layout_mode = 2
+stream = SubResource("VideoStreamTheora_7o8st")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_87wvs")
+}

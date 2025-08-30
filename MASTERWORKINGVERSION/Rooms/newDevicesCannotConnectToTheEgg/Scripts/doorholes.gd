@@ -23,12 +23,12 @@ func _on_enter_area_body_entered(body):
 		enter.play("enter")
 		enterarea.queue_free()
 		print("enter")
-		eggManager.timerstart.emit()
 
 func _on_enter_area_2_body_entered(body):
 	if body.name == "Player":
 		enter.play_backwards("enter")
 		enterarea2.queue_free()
+		eggManager.timerstart.emit()
 
 func _on_exit_area_body_entered(body):
 	if body.name == "Player":

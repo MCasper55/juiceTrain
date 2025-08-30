@@ -13,7 +13,7 @@ func _ready():
 	eggManager.timerstart.connect(start)
 
 func start():
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(15).timeout
 	timer.start(30.5)
 	monitoring = 1
 	eggManager.begin.emit()

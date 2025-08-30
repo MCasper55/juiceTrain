@@ -12,9 +12,10 @@ extends Node
 
 @onready var detach_anim_marker = $DetachManager/DetachAnimMarker
 
-#not to be confused with global.next_scene: this one is used to literally instantiate the next scene
+var next_scene #not to be confused with global.next_scene: this one is used to literally instantiate the next scene
 #for seemless transition between scenes. the global one is used to keep track of the next scene
-var next_scene
+
+var previous_scene #same deal here, this one is used for finding the length of the current scene with the global dictionary
 
 var rand = randi_range(1, 2)
 
@@ -23,10 +24,10 @@ var detaching = 0
 var pos = 0
 
 func _ready():
-	pick_next_scene()
 	Global.goto_scene.connect(goto_scene)
 	Global.detach_complete.connect(detach_complete)
 	Global.current_scene = $Areas.get_child(0)
+	pick_next_scene()
 	#Engine.time_scale = 0.1
 
 func goto_scene(path):
@@ -35,12 +36,13 @@ func goto_scene(path):
 
 func _deferred_goto_scene(path):
 	
-	if Global.previous_scene != null:
-		Global.previous_scene.queue_free()
+	#if Global.previous_scene != null:
+		#Global.previous_scene.queue_free()
 	
 	Global.previous_scene = current_scene
 	
 	pos -= 8
+	
 	
 	current_scene = next_scene
 	
@@ -78,7 +80,11 @@ func pick_next_scene():
 	
 	next_scene = n.instantiate()
 	
+	previous_scene = Global.next_scene
+	
 	areas.add_child(next_scene)
+	
+
 	
 	next_scene.position.z = pos - 8
 	#print(Global.next_scene)

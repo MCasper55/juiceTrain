@@ -14,9 +14,11 @@ signal detach_complete
 
 var scene_lengths = {
 	
-	"res://Scenes/scene_1.tscn": 5,
-	"res://Scenes/scene_2.tscn": 5,
-	
+	"res://Rooms/scene_1.tscn": 5,
+	"res://Rooms/scene_2.tscn": 5,
+	"res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/egg_room.tscn": 6,
+	"res://Scenes/home.tscn": 8
+
 }
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bicurmws3yvrj"]
+[gd_scene load_steps=26 format=3 uid="uid://bicurmws3yvrj"]
 
 [ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/egg.tscn" id="1_0ovjy"]
 [ext_resource type="Script" uid="uid://b42otttjctfch" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/egg_room.gd" id="1_ximd7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://oqlikm31c1s2" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/timer.tscn" id="3_iy5ji"]
 [ext_resource type="PackedScene" uid="uid://c5daybktsjlei" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/platform.tscn" id="3_ny0y6"]
 [ext_resource type="PackedScene" uid="uid://brmybqum2o0px" path="res://Scenes/scene_transition_area.tscn" id="3_p6my4"]
+[ext_resource type="PackedScene" uid="uid://bxdcyo1iqjscb" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/tv.tscn" id="4_nk4m1"]
 [ext_resource type="Script" uid="uid://chfala2kpj1o7" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/doorholes.gd" id="4_wqj4t"]
 [ext_resource type="PackedScene" uid="uid://cet3qj5abedkp" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/walls.tscn" id="5_6nr31"]
 [ext_resource type="PackedScene" uid="uid://qjbxvp5v1rr8" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/walkways.tscn" id="7_8ny45"]
@@ -207,6 +208,9 @@ spot_angle = 22.34
 [node name="SceneTransitionArea" parent="World" instance=ExtResource("3_p6my4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144591, -5.96046e-08, 3.9165)
 
+[node name="Tv" parent="World" instance=ExtResource("4_nk4m1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.79482e-08, 1.12054, 0.891623)
+
 [node name="Room" type="Node3D" parent="."]
 
 [node name="RoomCsg" type="CSGBox3D" parent="Room" groups=["CanBreakEgg"]]
@@ -298,7 +302,7 @@ libraries = {
 }
 
 [node name="Timer" parent="Room" instance=ExtResource("3_iy5ji")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.54767, 2.88568)
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, -5.67155e-09, 1.42203, 2.95055)
 
 [node name="Walls" parent="Room" instance=ExtResource("5_6nr31")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94937, 0)
