@@ -5,6 +5,8 @@ extends SpotLight3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	eggManager.eggCrack.connect(red)
+	eggManager.timerstart.connect(on)
+	light_energy = 0.5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,3 +19,6 @@ func red(bool):
 	elif bool == 0:
 		anims.play("makegreen")
 	
+func on():
+	await get_tree().create_timer(15).timeout
+	light_energy = 2

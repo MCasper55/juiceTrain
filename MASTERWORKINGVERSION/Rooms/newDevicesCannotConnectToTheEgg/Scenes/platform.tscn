@@ -31,7 +31,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_xdow6"]
 resource_name = "shrink"
-length = 35.0
+length = 50.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,7 +40,7 @@ tracks/0/path = NodePath("Platform:radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(5, 35),
+"times": PackedFloat32Array(15, 50),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [2.25, 1.0]
@@ -52,7 +52,7 @@ tracks/1/path = NodePath("Platform/Break/CollisionShape3D:shape:radius")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5, 35),
+"times": PackedFloat32Array(15, 50),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [2.18359, 0.964355]

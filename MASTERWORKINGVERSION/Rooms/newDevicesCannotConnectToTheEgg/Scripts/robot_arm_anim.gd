@@ -4,18 +4,21 @@ extends Node3D
 
 var justConnected = 0
 
+#for picking random animation
+var rand
+
 func _ready():
 	anims.speed_scale = randf_range(0.5, 1)
 	eggManager.eggCrack.connect(reverse) #if it starts to break, move this back into the extend function
 	eggManager.begin.connect(start)
 
 func start():
-	await get_tree().create_timer(randf_range(0, 10)).timeout
+	await get_tree().create_timer(randf_range(0, 8)).timeout
 	extend()
 
 func reverse(bool):
 	if justConnected == 0:
-		anims.speed_scale = randi_range(-9, -7)
+		anims.speed_scale = randi_range(-12, -14)
 
 
 func _on_area_area_entered(area):
@@ -33,4 +36,13 @@ func _on_area_area_entered(area):
 
 func extend():
 	if eggManager.someoneConnected == 0:
-		anims.play("extend")
+		rand = randi_range(1, 2)
+		if rand == 1:
+			anims.play("extend")
+		else:
+			rand = randi_range(1, 2)
+			if rand == 1:
+				anims.play("extend_2")
+			else:
+				anims.play("extend_3")
+		

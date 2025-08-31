@@ -6,12 +6,12 @@ var speed
 
 const WALK_SPEED = 1
 const SPRINT_SPEED = 1.5
-const JUMP_VELOCITY = 4
+const JUMP_VELOCITY = 3
 const SENSITIVITY = 0.002
 
 
 const BOB_FREQ = 3
-const BOB_AMP = 0.05
+const BOB_AMP = 0.03
 var t_bob = 0.0
 
 #fov

@@ -106,9 +106,9 @@ shadow_normal_bias = 0.0
 shadow_reverse_cull_face = true
 shadow_transmittance_bias = 0.0
 shadow_blur = 3.033
-spot_range = 7.102
+spot_range = 7.59017
 spot_attenuation = -0.24
-spot_angle = 43.0
+spot_angle = 44.867
 spot_angle_attenuation = 8.28211
 script = ExtResource("1_veqsg")
 

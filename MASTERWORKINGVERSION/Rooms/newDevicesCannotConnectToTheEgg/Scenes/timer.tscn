@@ -31,4 +31,73 @@ light_cull_mask = 4294966274
 spot_range = 6.05034
 spot_angle = 34.37
 
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.35, 0, 2.534)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46635, 0, 2.53365)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 4.9)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 4.20192)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, -2.34904, 0, 2.55096)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -1.65096, 0, 2.55096)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

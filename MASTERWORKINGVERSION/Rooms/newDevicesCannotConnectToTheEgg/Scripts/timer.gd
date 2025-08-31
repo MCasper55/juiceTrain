@@ -3,6 +3,9 @@ extends Node3D
 @onready var timer = $Timer
 
 @onready var label = $Label3D
+@onready var label_2 = $Label3D2
+@onready var label_3 = $Label3D3
+@onready var label_4 = $Label3D4
 
 var monitoring = 0
 
@@ -28,6 +31,9 @@ func _process(delta):
 			number = str(roundi(timer.time_left))
 		
 		label.text = number
+		label_2.text = number
+		label_3.text = number
+		label_4.text = number
 
 
 func _on_timer_timeout():
