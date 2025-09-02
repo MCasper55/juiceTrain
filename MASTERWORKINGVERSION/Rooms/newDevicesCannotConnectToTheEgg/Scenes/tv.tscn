@@ -1,9 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxdcyo1iqjscb"]
+[gd_scene load_steps=16 format=3 uid="uid://bxdcyo1iqjscb"]
 
 [ext_resource type="Script" uid="uid://65rvrkhgce1i" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/tv.gd" id="1_7o8st"]
+[ext_resource type="VideoStream" uid="uid://2my5bhvf6pgb" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/intro1080.ogv" id="2_fd8ub"]
+[ext_resource type="AudioStream" uid="uid://ctyn3w6e6j67g" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/newDevices_3.ogg" id="2_rbehl"]
+[ext_resource type="AudioStream" uid="uid://352v14tuvecc" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/introloop.ogg" id="4_fd8ub"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ckywi"]
 size = Vector2(1.92, 1.08)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fd8ub"]
+viewport_path = NodePath("TV/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nr7al"]
+viewport_path = NodePath("TV/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y4xi"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_fd8ub")
+emission_enabled = true
+emission_energy_multiplier = 6.06
+emission_texture = SubResource("ViewportTexture_nr7al")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ckywi"]
 viewport_path = NodePath("TV/SubViewport")
@@ -226,7 +242,7 @@ radius = 0.101
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.36588, 0.531202)
 layers = 2
 cast_shadow = 0
-size = Vector3(1.92, 1.08, 0.233)
+size = Vector3(2.12, 1.245, 0.233)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="TV/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.186594)
@@ -236,6 +252,12 @@ size = Vector3(1.515, 0.81, 0.383)
 
 [node name="Screen" type="MeshInstance3D" parent="TV/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.123)
+mesh = SubResource("PlaneMesh_ckywi")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3y4xi")
+
+[node name="Intro Screen" type="MeshInstance3D" parent="TV/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.125035)
 mesh = SubResource("PlaneMesh_ckywi")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ckywi")
@@ -250,6 +272,17 @@ offset_bottom = 40.0
 [node name="Video" type="VideoStreamPlayer" parent="TV/SubViewport/SubViewportContainer"]
 layout_mode = 2
 stream = SubResource("VideoStreamTheora_7o8st")
+volume_db = -80.0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="TV/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IntroVideo" type="VideoStreamPlayer" parent="TV/SubViewport/SubViewportContainer2"]
+layout_mode = 2
+stream = ExtResource("2_fd8ub")
+volume_db = -80.0
+autoplay = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="TV"]
 transform = Transform3D(1, 0, 0, 0, 0.964114, 0.265489, 0, -0.265489, 0.964114, 0, -0.241684, 2.5082)
@@ -257,7 +290,34 @@ light_cull_mask = 4294966274
 spot_range = 2.9615
 spot_angle = 36.2665
 
+[node name="Audio" type="AudioStreamPlayer3D" parent="TV"]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 0, -1.41882, 0.685062)
+stream = ExtResource("2_rbehl")
+attenuation_model = 2
+max_db = 0.0
+max_distance = 10.0
+bus = &"Egg Room"
+emission_angle_enabled = true
+emission_angle_degrees = 74.0
+emission_angle_filter_attenuation_db = -4.5
+
+[node name="IntroAudio" type="AudioStreamPlayer3D" parent="TV"]
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 0, -1.41882, 1.97103)
+stream = ExtResource("4_fd8ub")
+attenuation_model = 1
+volume_db = -15.0
+unit_size = 3.94
+max_db = 0.0
+autoplay = true
+max_distance = 6.0
+bus = &"Egg Room"
+emission_angle_degrees = 74.0
+emission_angle_filter_attenuation_db = -4.5
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_87wvs")
 }
+
+[connection signal="finished" from="TV/SubViewport/SubViewportContainer2/IntroVideo" to="." method="_on_intro_video_finished"]
+[connection signal="finished" from="TV/Audio" to="." method="_on_audio_finished"]

@@ -76,6 +76,7 @@ func pick_next_scene():
 	elif current_scene.is_in_group("not_home"):
 		Global.next_scene = "res://Scenes/home.tscn"
 		
+	print(Global.next_scene)
 	var n = load(Global.next_scene)
 	
 	next_scene = n.instantiate()

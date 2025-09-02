@@ -6,7 +6,7 @@ extends SpotLight3D
 func _ready():
 	eggManager.eggCrack.connect(red)
 	eggManager.timerstart.connect(on)
-	light_energy = 0.5
+	light_energy = 0.1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
