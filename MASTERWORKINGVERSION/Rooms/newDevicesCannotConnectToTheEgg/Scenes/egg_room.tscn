@@ -464,8 +464,6 @@ transform = Transform3D(0.701318, -0.65921, 0.271288, -0.70184, -0.571899, 0.424
 [node name="Egg" parent="Egg" instance=ExtResource("1_0ovjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16119, 0)
 
-[node name="Node3D" type="Node3D" parent="."]
-
 [connection signal="body_entered" from="Room/RoomCsg/EnterArea" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_body_entered"]
 [connection signal="body_entered" from="Room/RoomCsg/EnterArea2" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_2_body_entered"]
 [connection signal="body_entered" from="Room/RoomCsg/ExitArea" to="Room/RoomCsg/DoorholesManager" method="_on_exit_area_body_entered"]

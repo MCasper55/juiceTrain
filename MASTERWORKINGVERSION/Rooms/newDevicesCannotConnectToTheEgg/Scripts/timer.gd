@@ -7,6 +7,8 @@ extends Node3D
 @onready var label_3 = $Label3D3
 @onready var label_4 = $Label3D4
 
+@onready var eggInducingStressTimer = $EggInducingStressTimer
+
 var monitoring = 0
 
 var number
@@ -20,6 +22,8 @@ func start():
 	timer.start(30.5)
 	monitoring = 1
 	eggManager.begin.emit()
+
+	eggInducingStressTimer.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
