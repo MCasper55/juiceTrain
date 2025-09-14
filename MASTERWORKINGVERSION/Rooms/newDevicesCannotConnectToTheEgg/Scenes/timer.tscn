@@ -1,8 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://oqlikm31c1s2"]
+[gd_scene load_steps=7 format=3 uid="uid://oqlikm31c1s2"]
 
 [ext_resource type="Script" uid="uid://b1xurpdnwnwqb" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/timer.gd" id="1_pvhx5"]
 [ext_resource type="FontFile" uid="uid://cheyxlcb8du5p" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/14 Segment LED Regular.ttf" id="2_ycw00"]
 [ext_resource type="AudioStream" uid="uid://cgrex02t0cimn" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/30secondtimerforeggroom.ogg" id="3_ngutp"]
+
+[sub_resource type="Animation" id="Animation_ngutp"]
+resource_name = "tapeStop"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.3, 2.5, 3.4, 3.5, 3.7, 4.1, 13, 14.9),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1, 1, 1, 1, 0.5, 1, 1),
+"update": 0,
+"values": [1.0, 0.1, 0.45, 1.03, 0.01, 2.56, 0.2, 0.5, 0.05, 0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(14.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6yl63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fctfd"]
+_data = {
+&"RESET": SubResource("Animation_6yl63"),
+&"tapeStop": SubResource("Animation_ngutp")
+}
 
 [node name="Timer" type="Node3D"]
 script = ExtResource("1_pvhx5")
@@ -104,5 +166,10 @@ spot_angle = 34.37
 [node name="EggInducingStressTimer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ngutp")
 bus = &"Egg Room"
+
+[node name="EISTAanim" type="AnimationPlayer" parent="EggInducingStressTimer"]
+libraries = {
+&"": SubResource("AnimationLibrary_fctfd")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

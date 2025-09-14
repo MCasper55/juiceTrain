@@ -8,6 +8,7 @@ extends Node3D
 @onready var label_4 = $Label3D4
 
 @onready var eggInducingStressTimer = $EggInducingStressTimer
+@onready var eistAanim = $EggInducingStressTimer/EISTAanim
 
 var monitoring = 0
 
@@ -15,10 +16,13 @@ var number
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	eggManager.timerstart.connect(start)
+	eggManager.eggCrack.connect(stopMusic)
 
 func start():
 	await get_tree().create_timer(15).timeout
+	visible = true
 	timer.start(30.5)
 	monitoring = 1
 	eggManager.begin.emit()
@@ -39,6 +43,9 @@ func _process(delta):
 		label_3.text = number
 		label_4.text = number
 
+
+func stopMusic(bool):
+	eistAanim.play("tapeStop")
 
 func _on_timer_timeout():
 	if eggManager.someoneConnected == 0:
