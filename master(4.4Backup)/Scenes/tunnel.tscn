@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b88hvp12cmtdi"]
+
+[ext_resource type="Shader" uid="uid://dboitq1yi5dxw" path="res://Resources(for home)/tunnel.gdshader" id="1_pcsq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pcsq3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wo2mj"]
+render_priority = 0
+shader = ExtResource("1_pcsq3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iej5m"]
+lightmap_size_hint = Vector2i(27, 162)
+material = SubResource("ShaderMaterial_wo2mj")
+size = Vector2(5, 32)
+
+[node name="Tunnel" type="Node3D"]
+
+[node name="Side1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_pcsq3")
+mesh = SubResource("PlaneMesh_iej5m")
+
+[node name="Side2" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 3.5, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_pcsq3")
+mesh = SubResource("PlaneMesh_iej5m")

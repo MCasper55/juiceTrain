@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3rdxwrvpg6u5"]
+
+[ext_resource type="Script" uid="uid://usrpgtswmgi7" path="res://Scripts/pausemanager.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://binop5ajseaie" path="res://Scripts/playermovement.gd" id="1_suesc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7l837"]
+radius = 0.3
+height = 2.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ntmi"]
+radius = 0.3
+height = 2.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+radius = 0.731018
+height = 2.66278
+
+[node name="Player" type="Node3D" groups=["CanBreakEgg"]]
+metadata/_edit_group_ = true
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["CanBreakEgg"]]
+floor_stop_on_slope = false
+floor_max_angle = 0.698132
+platform_on_leave = 2
+script = ExtResource("1_suesc")
+
+[node name="Mesh" type="MeshInstance3D" parent="Player"]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_7l837")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_4ntmi")
+
+[node name="Pivot" type="Node3D" parent="Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="DeviceStopperForEgg" type="Area3D" parent="Player" groups=["stopsDevices"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/DeviceStopperForEgg" groups=["stopsDevices"]]
+shape = SubResource("CapsuleShape3D_cvnsp")
+debug_color = Color(0.960335, 1.73271e-06, 0.516611, 0.42)
+
+[node name="PauseManager" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("1_cvnsp")

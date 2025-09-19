@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceonid5xs2j1l"]
+[gd_scene load_steps=9 format=3 uid="uid://ceonid5xs2j1l"]
 
 [ext_resource type="Script" uid="uid://bfkmrgxh64w2v" path="res://Scripts/world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://d1tvd1irj463c" path="res://Scenes/home.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://c3rdxwrvpg6u5" path="res://Scenes/player.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://di3tluq51o8in" path="res://Scenes/despawn_zone.tscn" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://cm6vpovq7p22b" path="res://Scenes/detach_manager.tscn" id="4_8j60k"]
+[ext_resource type="PackedScene" uid="uid://b88hvp12cmtdi" path="res://Scenes/Tunnel/tunnel.tscn" id="6_5ukr8"]
 
 [sub_resource type="Environment" id="Environment_8j60k"]
 background_mode = 1
 background_energy_multiplier = 0.0
-ambient_light_source = 1
-ambient_light_color = Color(0.992186, 1, 0.535496, 1)
-ambient_light_energy = 0.1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.05
 reflected_light_source = 1
 glow_enabled = true
 glow_bloom = 0.2
@@ -53,6 +54,11 @@ transform = Transform3D(1.6, 0, 0, 0, 0.025, 0, 0, 0, 6.5, 0, -3.40477, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75192, 0)
 
 [node name="DetachManager" parent="." instance=ExtResource("4_8j60k")]
+
+[node name="Train" type="Node3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.7596321, 50)
+
+[node name="Tunnel" parent="Train" instance=ExtResource("6_5ukr8")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8j60k")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceonid5xs2j1l"]
+
+[ext_resource type="Script" uid="uid://bfkmrgxh64w2v" path="res://Scripts/world.gd" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://d1tvd1irj463c" path="res://Scenes/home.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://c3rdxwrvpg6u5" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://di3tluq51o8in" path="res://Scenes/despawn_zone.tscn" id="3_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://cm6vpovq7p22b" path="res://Scenes/detach_manager.tscn" id="4_8j60k"]
+
+[sub_resource type="Environment" id="Environment_8j60k"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+ambient_light_color = Color(0.992186, 1, 0.535496, 1)
+ambient_light_energy = 0.1
+reflected_light_source = 1
+glow_enabled = true
+glow_bloom = 0.2
+glow_blend_mode = 1
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 1.0
+fog_depth_begin = 0.0
+fog_depth_end = 2029.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_gi_inject = 0.18
+volumetric_fog_length = 20.0
+volumetric_fog_detail_spread = 0.901251
+volumetric_fog_ambient_inject = 16.0
+adjustment_saturation = 0.7
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_8j60k"]
+auto_exposure_scale = 0.02
+auto_exposure_speed = 64.0
+frustum_focus_distance = 1.0
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_5a7ea")
+
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="Train" parent="Areas" instance=ExtResource("1_a02cp")]
+
+[node name="DespawnZone" parent="Areas" instance=ExtResource("3_fo5ed")]
+transform = Transform3D(1.6, 0, 0, 0, 0.025, 0, 0, 0, 6.5, 0, -3.40477, 0)
+
+[node name="PersistantObjects" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75192, 0)
+
+[node name="DetachManager" parent="." instance=ExtResource("4_8j60k")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8j60k")
+camera_attributes = SubResource("CameraAttributesPhysical_8j60k")

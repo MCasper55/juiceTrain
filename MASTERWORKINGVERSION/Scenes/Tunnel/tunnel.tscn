@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://b88hvp12cmtdi"]
+
+[ext_resource type="PackedScene" uid="uid://cuun0bciwqa24" path="res://Scenes/Tunnel/tunnel.blend" id="1_i1mbf"]
+
+[sub_resource type="Animation" id="Animation_i1mbf"]
+resource_name = "move"
+length = 20.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tunnel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 11, 12, 13, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1), Vector3(0, 0, 39), Vector3(10, 0, 39), Vector3(10, 0, -27.3), Vector3(0, 0, -27.3), Vector3(0, 0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tunnel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -40.25), Vector3(0, 0, -0.25), Vector3(0, 0, 39)]
+}
+
+[sub_resource type="Animation" id="Animation_gyxiq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tunnel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tunnel2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -40.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kn12"]
+_data = {
+&"RESET": SubResource("Animation_gyxiq"),
+&"move": SubResource("Animation_i1mbf")
+}
+
+[node name="Tunnel" type="Node3D"]
+
+[node name="tunnel" parent="." instance=ExtResource("1_i1mbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="tunnel2" parent="." instance=ExtResource("1_i1mbf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.25)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7kn12")
+}
+autoplay = "move"

@@ -1,0 +1,471 @@
+[gd_scene load_steps=26 format=3 uid="uid://bicurmws3yvrj"]
+
+[ext_resource type="PackedScene" uid="uid://bjqocm1e2a7rm" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/egg.tscn" id="1_0ovjy"]
+[ext_resource type="Script" uid="uid://b42otttjctfch" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/egg_room.gd" id="1_ximd7"]
+[ext_resource type="Script" uid="uid://byu5ts3f7lmlp" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/stand.gd" id="2_ehajl"]
+[ext_resource type="PackedScene" uid="uid://2xlhv5m41m67" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/robot_arm_anim.tscn" id="2_fesqg"]
+[ext_resource type="PackedScene" uid="uid://db2pf3pk00u66" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/light.tscn" id="2_q4d83"]
+[ext_resource type="PackedScene" uid="uid://oqlikm31c1s2" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/timer.tscn" id="3_iy5ji"]
+[ext_resource type="PackedScene" uid="uid://c5daybktsjlei" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/platform.tscn" id="3_ny0y6"]
+[ext_resource type="PackedScene" uid="uid://brmybqum2o0px" path="res://Scenes/scene_transition_area.tscn" id="3_p6my4"]
+[ext_resource type="PackedScene" uid="uid://bxdcyo1iqjscb" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/tv.tscn" id="4_nk4m1"]
+[ext_resource type="Script" uid="uid://chfala2kpj1o7" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/doorholes.gd" id="4_wqj4t"]
+[ext_resource type="PackedScene" uid="uid://cet3qj5abedkp" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/walls.tscn" id="5_6nr31"]
+[ext_resource type="PackedScene" uid="uid://qjbxvp5v1rr8" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scenes/walkways.tscn" id="7_8ny45"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fesqg"]
+size = Vector3(6.015, 0.093, 6.212)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesqg"]
+grow_amount = -16.0
+
+[sub_resource type="Animation" id="Animation_1gr0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.4, 2.692, 5.52)]
+}
+
+[sub_resource type="Animation" id="Animation_uvjjr"]
+resource_name = "exit"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.5, 0), Vector3(0, 2.5, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.24901, 1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52), Vector3(1.4, 2.692, 5.52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gr0p"]
+_data = {
+&"RESET": SubResource("Animation_1gr0p"),
+&"exit": SubResource("Animation_uvjjr")
+}
+
+[sub_resource type="Animation" id="Animation_yec1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5a5t"]
+resource_name = "enter"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Doorholes:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.86374, 1),
+"update": 0,
+"values": [Vector3(1.4, 0.017, 5.52), Vector3(1.4, 2.692, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Doorholes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.5, 0), Vector3(0, 2.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1yyp"]
+_data = {
+&"RESET": SubResource("Animation_yec1i"),
+&"enter": SubResource("Animation_d5a5t")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ol0f"]
+size = Vector3(1, 2.7485, 0.0617371)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4afia"]
+grow_amount = 1.368
+
+[sub_resource type="Animation" id="Animation_ehajl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.82119, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iy5ji"]
+resource_name = "standretract"
+length = 15.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 15),
+"transitions": PackedFloat32Array(2, 2, 1),
+"update": 0,
+"values": [Vector3(0, -1.82119, 0), Vector3(0, -1.82119, 0), Vector3(0, -2.921, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4d83"]
+_data = {
+&"RESET": SubResource("Animation_ehajl"),
+&"standretract": SubResource("Animation_iy5ji")
+}
+
+[node name="EggRoom" type="Node3D" groups=["not_home"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.1, 0)
+script = ExtResource("1_ximd7")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="FloorBreak" type="Area3D" parent="World" groups=["CanBreakEgg"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.72798, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorBreak"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30381, 0)
+shape = SubResource("BoxShape3D_fesqg")
+debug_color = Color(0.903173, 0.000148628, 0.753945, 0.42)
+
+[node name="Light" parent="World" instance=ExtResource("2_q4d83")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.99626, 0)
+spot_angle = 22.34
+
+[node name="SceneTransitionArea" parent="World" instance=ExtResource("3_p6my4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144591, -5.96046e-08, 3.9165)
+
+[node name="Tv" parent="World" instance=ExtResource("4_nk4m1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.79482e-08, 1.12054, 0.891623)
+
+[node name="Room" type="Node3D" parent="."]
+
+[node name="RoomCsg" type="CSGBox3D" parent="Room" groups=["CanBreakEgg"]]
+transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, -3.14645, 0)
+use_collision = true
+size = Vector3(6, 10.1096, 6)
+material = SubResource("StandardMaterial3D_fesqg")
+
+[node name="Room hole" type="CSGBox3D" parent="Room/RoomCsg"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, -0.296179, 0)
+operation = 2
+size = Vector3(5.8, 10.502, 5.8)
+
+[node name="DoorholesManager" type="Node3D" parent="Room/RoomCsg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52062, 0)
+script = ExtResource("4_wqj4t")
+
+[node name="Doorholes" type="CSGBox3D" parent="Room/RoomCsg"]
+operation = 2
+size = Vector3(1.4, 0.017, 5.52)
+
+[node name="Exit" type="AnimationPlayer" parent="Room/RoomCsg"]
+root_node = NodePath("../DoorholesManager")
+libraries = {
+&"": SubResource("AnimationLibrary_1gr0p")
+}
+
+[node name="Enter" type="AnimationPlayer" parent="Room/RoomCsg"]
+root_node = NodePath("../DoorholesManager")
+libraries = {
+&"": SubResource("AnimationLibrary_m1yyp")
+}
+
+[node name="EnterArea" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.8225e-07, 2.52062, 4.37243)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/EnterArea"]
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, 2.61513e-07, -0.0706635, -0.807439)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="EnterArea2" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.03628e-07, 2.52062, 2.32923)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/EnterArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 0.201447)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="ExitArea" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.12198e-07, 2.52062, -0.899439)
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/ExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 0.384317)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="ExitArea2" type="Area3D" parent="Room/RoomCsg"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.38686e-07, 2.52062, -2.73025)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/RoomCsg/ExitArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227448, 1.10373)
+shape = SubResource("BoxShape3D_0ol0f")
+
+[node name="TopHole" type="CSGCylinder3D" parent="Room/RoomCsg"]
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, 0, 5.02758, 0)
+operation = 2
+radius = 1.38623
+height = 0.231171
+sides = 16
+
+[node name="Stand" type="CSGCylinder3D" parent="Room"]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -1.82119, 0)
+use_collision = true
+radius = 0.062
+height = 3.13607
+smooth_faces = false
+material = SubResource("StandardMaterial3D_4afia")
+script = ExtResource("2_ehajl")
+
+[node name="Standhole" type="CSGSphere3D" parent="Room/Stand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56819, 0)
+operation = 2
+radius = 0.1
+radial_segments = 16
+rings = 16
+
+[node name="StandAnim" type="AnimationPlayer" parent="Room/Stand"]
+libraries = {
+&"": SubResource("AnimationLibrary_q4d83")
+}
+
+[node name="Timer" parent="Room" instance=ExtResource("3_iy5ji")]
+transform = Transform3D(-1.2, 0, -1.81195e-07, 0, 1.2, 0, 1.81195e-07, 0, -1.2, -5.67155e-09, 1.42203, 2.95055)
+
+[node name="Walls" parent="Room" instance=ExtResource("5_6nr31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.94937, 0)
+
+[node name="Walkways" parent="Room" instance=ExtResource("7_8ny45")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.99105, -0.0315164)
+
+[node name="Platform" parent="Room" instance=ExtResource("3_ny0y6")]
+transform = Transform3D(-1.03, 0, -9.00455e-08, 0, 1.03, 0, 9.00455e-08, 0, -1.03, 0, -3.14585, 0)
+
+[node name="Devices" type="Node3D" parent="."]
+transform = Transform3D(-0.417994, -0.90845, 0, 0.90845, -0.417994, 0, 0, 0, 1, 1.5, -0.5, 0)
+
+[node name="RobotArmAnim" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.999804, -0.0197907, 0, 0.0197907, 0.999804, 0, 0, 0, 1, 0.0192918, -1.32981, 0)
+
+[node name="RobotArmAnim5" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.9796, 0.175797, -0.0973711, -0.188286, 0.972238, -0.138936, 0.0702433, 0.154435, 0.985503, -0.454055, -1.11126, -0.420143)
+
+[node name="RobotArmAnim10" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.967932, 0.202839, -0.148209, -0.245304, 0.890385, -0.383462, 0.0541819, 0.407521, 0.911587, -0.553038, -1.06572, -1.16649)
+
+[node name="RobotArmAnim4" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.947468, 0.319853, 0, -0.319853, 0.947468, 0, 0, 0, 1, -0.842362, -0.933347, 0)
+
+[node name="RobotArmAnim11" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.89793, 0.419305, -0.133815, -0.440115, 0.852128, -0.283157, -0.00470205, 0.313149, 0.949693, -1.08644, -0.82104, -0.885136)
+
+[node name="RobotArmAnim3" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.990845, -0.0662151, 0.117662, 0.0298787, 0.957412, 0.287179, -0.131666, -0.281034, 0.950623, 0.134322, -1.38274, 0.9)
+
+[node name="RobotArmAnim7" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.986491, -0.0146233, 0.163166, -0.0643745, 0.881283, 0.468186, -0.150642, -0.472365, 0.868435, 0.134322, -1.38274, 1.6144)
+
+[node name="RobotArmAnim12" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.975622, 0.179059, 0.126895, -0.219391, 0.810601, 0.542951, -0.00564084, -0.557554, 0.830122, -0.469522, -1.1049, 1.83173)
+
+[node name="RobotArmAnim6" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.956939, 0.240551, 0.162498, -0.270281, 0.94254, 0.196392, -0.105919, -0.231855, 0.966967, -0.643138, -1.02501, 0.677359)
+
+[node name="RobotArmAnim9" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.89632, 0.383525, 0.222539, -0.442141, 0.81103, 0.383076, -0.0335665, -0.441751, 0.89651, -1.02351, -0.849997, 1.32154)
+
+[node name="RobotArmAnim2" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.987465, -0.0669, -0.142962, 0.0193992, 0.950308, -0.310708, 0.156645, 0.30404, 0.939693, 0.225167, -1.42454, -0.9)
+
+[node name="RobotArmAnim8" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.989265, 0.00547341, -0.146036, -0.0760277, 0.872695, -0.482312, 0.124804, 0.488237, 0.863741, 0.0124235, -1.32665, -1.63919)
+
+[node name="RobotArmAnim25" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.954437, 0.117535, 0.274296, -0.273207, 0.713917, 0.644734, -0.120046, -0.690296, 0.713498, -0.263429, -0.942384, 2.33815)
+
+[node name="RobotArmAnim26" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.824659, 0.398986, 0.400938, -0.56394, 0.634761, 0.528255, -0.0437332, -0.661733, 0.748464, -1.31574, -0.569838, 2.24898)
+
+[node name="RobotArmAnim27" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.882499, 0.233166, 0.408454, -0.46594, 0.551695, 0.691763, -0.0640456, -0.800794, 0.595509, -0.681926, -0.204283, 2.7)
+
+[node name="RobotArmAnim28" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.886333, -0.354807, 0.297536, -0.461068, -0.616836, 0.637911, -0.0428046, -0.702585, -0.710311, 1.41703, 3.97712, 2.7)
+
+[node name="RobotArmAnim29" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.904607, 0.093016, 0.415978, -0.416725, 0.398152, 0.8172, -0.0896099, -0.912592, 0.398933, -0.195869, 0.400233, 2.7)
+
+[node name="RobotArmAnim30" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.751344, -0.535671, 0.385409, -0.490642, -0.0628833, 0.86909, -0.44131, -0.842083, -0.310069, 1.63448, 1.87764, 2.7)
+
+[node name="RobotArmAnim31" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.77561, -0.544161, 0.319876, -0.522695, -0.26959, 0.808772, -0.353866, -0.794489, -0.493526, 1.93309, 2.52663, 2.7)
+
+[node name="RobotArmAnim32" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.886114, -0.393087, 0.245537, -0.413926, -0.432876, 0.800803, -0.208498, -0.811237, -0.546286, 1.42009, 3.00191, 2.7)
+
+[node name="RobotArmAnim33" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.758008, -0.519513, 0.394381, -0.645025, -0.507313, 0.571472, -0.0968123, -0.687563, -0.719644, 1.999, 3.42857, 2.51708)
+
+[node name="RobotArmAnim34" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.893578, -0.176102, 0.41293, -0.448101, -0.405241, 0.796861, 0.0270068, -0.897091, -0.441025, 0.652849, 2.79333, 2.7)
+
+[node name="RobotArmAnim35" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.873046, -0.288982, 0.392786, -0.229274, 0.467646, 0.853664, -0.430378, -0.835343, 0.34202, 0.972934, 0.200627, 2.7)
+
+[node name="RobotArmAnim36" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.897459, -0.122788, 0.423665, -0.275555, 0.593937, 0.75585, -0.344439, -0.795088, 0.499199, 0.451214, -0.373001, 2.7)
+
+[node name="RobotArmAnim37" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.828409, -0.465723, -0.311199, -0.547112, -0.55371, -0.627755, 0.120046, 0.690296, -0.713498, 1.6947, 3.55995, -2.34832)
+
+[node name="RobotArmAnim38" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.92798, -0.267298, -0.259637, -0.367094, -0.535991, -0.760237, 0.0640457, 0.800794, -0.595509, 0.861894, 3.39759, -2.71016)
+
+[node name="RobotArmAnim39" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.926775, 0.237634, -0.290898, -0.373175, 0.67075, -0.640966, 0.0428046, 0.702585, 0.710311, -0.948187, -0.916733, -2.71016)
+
+[node name="RobotArmAnim40" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.910948, -0.212632, -0.353505, -0.408197, -0.340776, -0.846906, 0.0596134, 0.915785, -0.397224, 0.719002, 2.63518, -2.71016)
+
+[node name="RobotArmAnim41" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.861416, -0.30073, -0.4093, -0.251418, 0.447727, -0.858097, 0.44131, 0.842083, 0.310069, 0.787737, 0.283974, -2.71016)
+
+[node name="RobotArmAnim42" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.901545, -0.149269, -0.406126, -0.248994, 0.588649, -0.769088, 0.353866, 0.794489, 0.493526, 0.489122, -0.365022, -2.71016)
+
+[node name="RobotArmAnim43" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.89083, 0.0730211, -0.448435, -0.403678, 0.580144, -0.707446, 0.208498, 0.811237, 0.546285, -0.205567, -0.28462, -2.71016)
+
+[node name="RobotArmAnim44" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.985359, 0.0658196, -0.1573, -0.147627, 0.790961, -0.593796, 0.0853341, 0.60832, 0.789093, -0.152983, -1.00184, -2.06938)
+
+[node name="RobotArmAnim45" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.92164, 0.193196, -0.336542, -0.387113, 0.397376, -0.832008, -0.0270068, 0.897091, 0.441025, -0.546298, 0.433762, -2.71016)
+
+[node name="RobotArmAnim46" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.742094, -0.543156, -0.392786, -0.513881, -0.0847646, -0.853664, 0.430378, 0.835343, -0.34202, 1.63097, 1.87739, -2.71016)
+
+[node name="RobotArmAnim47" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.793124, -0.530949, -0.298412, -0.502313, -0.293141, -0.813482, 0.34444, 0.795087, -0.499199, 1.7272, 2.64679, -2.71016)
+
+[node name="RobotArmAnim13" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.635405, -0.77218, 1.20615e-08, -0.77218, -0.635405, 6.00617e-08, -5.96046e-08, -7.45058e-08, -1, 2.28094, 3.58557, 0.138869)
+
+[node name="RobotArmAnim14" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.780285, -0.624003, 0.0421697, -0.621469, -0.766011, 0.164336, -0.0702433, -0.154435, -0.985503, 1.80703, 3.80288, 0.559012)
+
+[node name="RobotArmAnim15" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.815997, -0.544246, 0.194802, -0.575514, -0.733298, 0.362024, -0.0541819, -0.407521, -0.911587, 1.70805, 3.84842, 1.30536)
+
+[node name="RobotArmAnim16" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.859365, -0.510857, 0.0227649, -0.511331, -0.857959, 0.0494763, -0.00574393, -0.0541586, -0.998516, 1.41929, 3.98203, 0.138869)
+
+[node name="RobotArmAnim17" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.918407, -0.374367, 0.12799, -0.395614, -0.872805, 0.285838, 0.00470204, -0.313149, -0.949693, 1.17521, 4.09434, 1.02401)
+
+[node name="RobotArmAnim18" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.621915, -0.770187, -0.141553, -0.771938, -0.572569, -0.276186, 0.131666, 0.281034, -0.950623, 2.39598, 3.53264, -0.761131)
+
+[node name="RobotArmAnim19" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.690664, -0.678807, -0.249416, -0.707315, -0.562224, -0.428501, 0.150642, 0.472365, -0.868435, 2.39598, 3.53264, -1.47553)
+
+[node name="RobotArmAnim20" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.80132, -0.499125, -0.329793, -0.598212, -0.663334, -0.449594, 0.00564083, 0.557554, -0.830122, 1.79213, 3.81048, -1.69286)
+
+[node name="RobotArmAnim21" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.827814, -0.559322, -0.043435, -0.550916, -0.795868, -0.251175, 0.105919, 0.231855, -0.966967, 1.61852, 3.89036, -0.538489)
+
+[node name="RobotArmAnim22" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.918077, -0.376377, -0.124423, -0.394856, -0.840509, -0.370998, 0.0350558, 0.389731, -0.920261, 1.23814, 4.06538, -1.18267)
+
+[node name="RobotArmAnim23" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.627675, -0.765237, 0.142962, -0.762554, -0.567427, 0.310709, -0.156645, -0.30404, -0.939693, 2.48682, 3.49084, 1.03887)
+
+[node name="RobotArmAnim24" parent="Devices" instance=ExtResource("2_fesqg")]
+transform = Transform3D(0.701318, -0.65921, 0.271288, -0.70184, -0.571899, 0.424682, -0.124805, -0.488237, -0.863741, 2.27408, 3.58873, 1.77806)
+
+[node name="Egg" type="Node3D" parent="."]
+
+[node name="EggManager" type="Node3D" parent="Egg"]
+
+[node name="Egg" parent="Egg" instance=ExtResource("1_0ovjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16119, 0)
+
+[connection signal="body_entered" from="Room/RoomCsg/EnterArea" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/EnterArea2" to="Room/RoomCsg/DoorholesManager" method="_on_enter_area_2_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/ExitArea" to="Room/RoomCsg/DoorholesManager" method="_on_exit_area_body_entered"]
+[connection signal="body_entered" from="Room/RoomCsg/ExitArea2" to="Room/RoomCsg/DoorholesManager" method="_on_exit_area_2_body_entered"]
+[connection signal="animation_finished" from="Room/Stand/StandAnim" to="Room/Stand" method="_on_stand_anim_animation_finished"]

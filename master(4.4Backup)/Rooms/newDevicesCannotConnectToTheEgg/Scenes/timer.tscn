@@ -1,0 +1,175 @@
+[gd_scene load_steps=7 format=3 uid="uid://oqlikm31c1s2"]
+
+[ext_resource type="Script" uid="uid://b1xurpdnwnwqb" path="res://Rooms/newDevicesCannotConnectToTheEgg/Scripts/timer.gd" id="1_pvhx5"]
+[ext_resource type="FontFile" uid="uid://cheyxlcb8du5p" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/14 Segment LED Regular.ttf" id="2_ycw00"]
+[ext_resource type="AudioStream" uid="uid://cgrex02t0cimn" path="res://Rooms/newDevicesCannotConnectToTheEgg/Other/30secondtimerforeggroom.ogg" id="3_ngutp"]
+
+[sub_resource type="Animation" id="Animation_6yl63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ngutp"]
+resource_name = "tapeStop"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.3, 2.5, 3.4, 3.5, 3.7, 4.1, 13, 14.9),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1, 1, 1, 1, 0.5, 1, 1),
+"update": 0,
+"values": [1.0, 0.1, 0.45, 1.03, 0.01, 2.56, 0.2, 0.5, 0.05, 0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(14.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fctfd"]
+_data = {
+&"RESET": SubResource("Animation_6yl63"),
+&"tapeStop": SubResource("Animation_ngutp")
+}
+
+[node name="Timer" type="Node3D"]
+script = ExtResource("1_pvhx5")
+
+[node name="Label3D" type="Label3D" parent="."]
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.06731)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.35, 0, 2.534)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46635, 0, 2.53365)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 4.9)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 4.20192)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, -2.34904, 0, 2.55096)
+layers = 2
+cast_shadow = 1
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.566
+texture_filter = 0
+modulate = Color(1, 0.268482, 0.208356, 1)
+text = "00"
+font = ExtResource("2_ycw00")
+font_size = 150
+outline_size = 40
+text_direction = 2
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -1.65096, 0, 2.55096)
+light_color = Color(0.613755, 0, 0.000886761, 1)
+light_energy = 0.6
+light_cull_mask = 4294966274
+spot_range = 6.05034
+spot_angle = 34.37
+
+[node name="EggInducingStressTimer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ngutp")
+bus = &"Egg Room"
+
+[node name="EISTAanim" type="AnimationPlayer" parent="EggInducingStressTimer"]
+libraries = {
+&"": SubResource("AnimationLibrary_fctfd")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
